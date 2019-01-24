@@ -1,3 +1,24 @@
+<!--
+For anyone wanting to contribute to this html page, here is the stuff that I have figured out.
+Each row is in a <tr> tag, and each row has 8 columns, using <td> tags
+Colspan in td controls how many columns it spans. In the <td> tag, the class 'do' means open to below, 'u' means open to above
+<td> tags must start with a <span> tag, which have different class for different amount of points.
+Power:
+mi: -1
+t: -3
+m: -5
+h: -7
+s: -9
+Drawback:
+t: +1
+m: +2
+h: +3
+s: +4
+Corruption:
+t: +1
+m: +2
+h: +3
+-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -2089,7 +2110,7 @@ var svg_data = {
 				</td>
 				<td rowspan="1" class="u d"><span class="h">Rude Guest<img class="u_svg"/><img class="g_svg"/></span>
 					You can now hear a <em>devoured</em> subject somewhat muffled speech and feel their struggles.  If they strike the walls of your organ you may feel this in nearby organs, which may be slightly painful or nauseating.</td>
-				<td rowspan="1" class="u d"><span class="s">Fatal Vore<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td rowspan="1" class="u d"><span class="h">Fatal Vore<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					At least once per month a <em>devoured</em> subject must also be completely digested and killed.  It supresses the hunger effect from <strong>Endosoma</strong> for four weeks.  You may choose at any time to digest a <em>devoured</em> subject. Cannot be taken with the <strong>Unbirth</strong> drawback.
 				</td>
 				<td colspan="2"  class="d u"><span class="m">Mind Worms<img class="u_svg"/><img class="g_svg"/></span>
@@ -2099,7 +2120,7 @@ var svg_data = {
 					Requires a cock.  You require a cock-milking machine. You can't get off without it.
 				</td>
 			</tr>
-			<td colspan="2"class="u d"><span class="m">Rebirth<img class="u_svg"/><img class="g_svg"/></span>
+			<td colspan="2"class="u d"><span class="t">Rebirth<img class="u_svg"/><img class="g_svg"/></span>
 				Unbirthed subjects are now reborn as your child and are always retained for 6 months.  Genetically they become your child with that person which may result in sex changes.  They are age regressed as a normal child.  If you took <strong>Inhuman</strong> they will be your sort of creature.  If you took <strong>Multiple Birth</strong> you will birth 2 or 3 as their fraternal  siblings at the same time.  They retain their full memory.  You only must unbirth someone once each year.
 			</td>
 			<td class="d"><span class="t">Marked<img class="u_svg"/></span>

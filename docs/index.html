@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!--
+For anyone wanting to contribute to this html page, here is the stuff that I have figured out.
+Each row is in a <tr> tag, and each row has 8 columns, using <td> tags
+Colspan in td controls how many columns it spans, and rowspan controls how many row it spans. In the <td> tag, the class 'parent' means that the option has a parent, the class 'child' means that the option has a child. The class 'child-left' and 'child-right' is when there's an edge not filled by a child.
+<td> tags must start with a <span> tag, which have different classes for different amount of points.
+a1 is add 1 point, a2 is add 2 points, all the way to 9 points
+s1 is subtract 1 point, s2 is subtract 2 points, all the way to 9 points
+Asking me on reddit (/u/SGVsbG8gV29ybGQK) is always recommended
+-->
 <html>
 	<head>
 		<meta charset="utf-8"/>
@@ -10,18 +19,8 @@ body {
 	font-family: sans-serif;
 }
 
-.n {
-	color: #d9d;
-	background-color: #212;
-}
-
 td {
 	border-radius: 16px;
-}
-
-h1 {
-	font-size: 32px;
-	float: left;
 }
 
 h1 {
@@ -42,14 +41,43 @@ td, p {
 	font-size: 12px;
 }
 
-.p {
+span.a1:after {content: "+1";}
+span.a2:after {content: "+2";}
+span.a3:after {content: "+3";}
+span.a4:after {content: "+4";}
+span.a5:after {content: "+5";}
+span.a6:after {content: "+6";}
+span.a7:after {content: "+7";}
+span.a8:after {content: "+8";}
+span.a9:after {content: "+9";}
+span.s1:after {content: "-1";}
+span.s2:after {content: "-2";}
+span.s3:after {content: "-3";}
+span.s4:after {content: "-4";}
+span.s5:after {content: "-5";}
+span.s6:after {content: "-6";}
+span.s7:after {content: "-7";}
+span.s8:after {content: "-8";}
+span.s9:after {content: "-9";}
+
+#powers td {
 	background-color: #441;
 	color: #ff8;
 }
 
-.c {
+#drawbacks td{
+	background-color: #511;
+	color: #f88;
+}
+
+#corruptions td {
 	background-color: #d20;
 	color: #dc3;
+}
+
+#punishments td {
+	color: #d9d;
+	background-color: #212;
 }
 
 td span {
@@ -90,11 +118,7 @@ td {
 	margin: 2px;
 	vertical-align: top;
 	border: 5px solid black;
-}
-
-.d {
-	background-color: #511;
-	color: #f88;
+	position: relative;
 }
 
 .head {
@@ -111,9 +135,10 @@ span img {
 table {
 	border-spacing: 8px;
 	width: 100%;
+	table-layout: fixed;
 }
 
-td.u span:before {
+td.parent span:before {
 	content: "(requires all items above)";
 	font-size: 8px;
 	position: relative;
@@ -124,7 +149,7 @@ td.u span:before {
 	padding: 2px 0px 3px;
 }
 
-td.uo span:before {
+td.parent-optional span:before {
 	content: "(requires one of the items above)";
 	font-size: 8px;
 	position: relative;
@@ -135,20 +160,17 @@ td.uo span:before {
 	padding: 2px 0px 3px;
 }
 
-td.u,td.uo {
+td.parent, td.parent-optional {
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
-}
-
-td.u,td.uo {
 	border-spacing: 8px;
 }
 
-td.do,td.dl {
+td.child, td.child-left {
 	border-bottom-left-radius: 0px;
 }
 
-td.do,td.dr {
+td.child, td.child-right {
 	border-bottom-right-radius: 0px;
 }
 
@@ -167,29 +189,6 @@ td img.na {
 	visibility: initial;
 }
 
-/*td span:after { content: attr(title); float: left; font-size: 8px; color: grey; display: block; position: relative; top: 18px; left: -3px; font-family: monospace; }*/
-
-td.ln {
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-}
-
-td.ln:before {
-	content: attr(value);
-	position: relative;
-	display: block;
-	top: -26px;
-	background-color: inherit;
-	margin: 0px -13px;
-	border-left: 5px solid black;
-	border-right: 5px solid black;
-	text-indent: 8px;
-}
-
-td {
-	position: relative;
-}
-
 td i {
 	position: absolute;
 	margin: auto;
@@ -201,67 +200,7 @@ td i {
 	font-size: 8px;
 }
 
-td.d span.t:after {
-	content: "+1";
-}
-
-td.d span.m:after {
-	content: "+2";
-}
-
-td.d span.h:after {
-	content: "+3";
-}
-
-td.d span.s:after {
-	content: "+4";
-}
-
-td.n span.t:after {
-	content: "+1";
-}
-
-td.n span.m:after {
-	content: "+2";
-}
-
-td.n span.h:after {
-	content: "+3";
-}
-
-td.c span.t:after {
-	content: "+1";
-}
-
-td.c span.m:after {
-	content: "+2";
-}
-
-td.c span.h:after {
-	content: "+3";
-}
-
-td.p span.mi:after {
-	content: "—1";
-}
-
-td.p span.t:after {
-	content: "—3";
-}
-
-td.p span.m:after {
-	content: "—5";
-}
-
-td.p span.h:after {
-	content: "—7";
-}
-
-td.p span.s:after {
-	content: "—9";
-}
-
-td span.t:after, td span.m:after, td span.h:after, td span.mi:after, td span.s:after {
+td span:after {
 	font-family: monospace;
 	font-weight: normal;
 	color: white;
@@ -271,12 +210,7 @@ td span.t:after, td span.m:after, td span.h:after, td span.mi:after, td span.s:a
 	font-size: 13px;
 }
 
-td.d span.t:after, td.d span.m:after, td.d span.h:after, td.d span.mi:after, td span.s:after {
-	position: relative;
-	top: -5px;
-}
-
-td.c span.t:after, td.c span.m:after, td.c span.h:after, td.c span.mi:after, td span.s:after {
+#drawbacks span:after, #corruptions span:after {
 	position: relative;
 	top: -5px;
 }
@@ -287,9 +221,9 @@ td.c span.t:after, td.c span.m:after, td.c span.h:after, td.c span.mi:after, td 
 	right: 0px;
 }
 
-td.rolled.d {
-	background-color: #844;
-	color: white;
+td.rolled {
+	background-color: #844 !important;
+	color: white !important;
 }
 
 td.seld.selectable {
@@ -378,15 +312,10 @@ function ccount(n) {
 		bminus.onclick = function() {
 			ccount(-2);
 		};
-		// blist = document.createElement('button');
-		// blist.type = 'button';
-		// blist.appendChild(document.createTextNode('listing'));
-		// blist.onclick = listing;
 		var p = document.createElement('p');
 		counter.appendChild(bminus);
 		counter.appendChild(broll);
 		counter.appendChild(bplus);
-		// counter.appendChild(blist);
 		counter.appendChild(p);
 		document.body.appendChild(counter);
 		counter = p;
@@ -412,36 +341,30 @@ function init() {
 	}
 	n = 0;
 	var spans = document.getElementsByTagName('span');
-	var rangeSizes = {'t': 6, 'm': 6, 'h': 6, 's': 3};
-	var powerPoints = {'t':-3 ,'m': -5, 'h': -7, 's': -9};
-	var drawbPoints = {'t': 1, 'm': 2, 'h': 3, 's': 4};
-	var corrPoints = {'t': 1, 'm': 2, 'h': 3};
 	for(var i in spans) {
 		span = spans[i];
 		className = span.className;
 		var parentElm = span.parentElement;
-		if(className in rangeSizes) {
+		if(className && className.length == 2) {
 			parentElm.className += ' selectable';
-			var splitName = span.parentElement.className.split(' ');
-			if(splitName.indexOf('d') > -1 && isnotjob(parentElm)) {
+			var table = parentElm.parentElement.parentElement.parentElement;
+			if(table.id == 'drawbacks' && isnotjob(parentElm)) {
 				element = document.createElement('i');
-				r = rangeSizes[className];
+				r = 6
 				v = r <= 1 ? '' + n : '' + n + '~' + (n + r - 1);
 				element.appendChild(document.createTextNode(v));
 				parentElm.appendChild(element);
 				for(var i = n; i < n + r; i++)
 					items[i] = parentElm;
 				n += r;
-				parentElm.points = drawbPoints[className];
-			} else if(splitName.indexOf('p') > -1)
-				parentElm.points = powerPoints[className];
-			else if(splitName.indexOf('c') > -1)
-				parentElm.points = corrPoints[className];
+			}
+			if (table.id != 'punishments')
+				parentElm.points = parseInt(className[0] == 'a' ? className[1] : -className[1])
 			else
 				parentElm.points = 0;
 		}
 
-		if(parentElm && className in rangeSizes) {
+		if(parentElm && className.length == 2) {
 			parentElm.selected = false;
 			parentElm.onclick = function(e) {
 				var isdrawback = this.className.split(' ').indexOf('d') > -1;
@@ -902,7 +825,7 @@ var svg_data = {
 	<body onload="init()">
 		<table>
 			<tr>
-				<td colspan="7" class="head">
+				<td class="head" colspan="7">
 					<h1>Enchante/d/ Rings CYOA</h1>
 					<p>
 						The goddess of all things lewd has granted you the power to craft magical rings. When worn, they will provide magical powers; but in exchange, they will carry some drawbacks for the entertainment of the goddess. You must craft all rings right now, but can read the whole document before doing anything.
@@ -953,7 +876,7 @@ var svg_data = {
 				<td class="head"><span>Relocated</span>
 					At the time of the crafting, you are provided a home, very basic welfare income, and a blank criminal record in any city of any country on earth. You must choose that city <em>now</em>.
 				</td>
-				<td class="head" colspan="1"><span>Swapped gender</span>
+				<td class="head"><span>Swapped gender</span>
 					You permanently become, if you choose so <em>now</em>, an equivalent of the current you but of the opposite gender. If you do so, you may choose to mentally adopt the psychological gender-specific characteristics of taken gender if you want to. You are as fertile as a normal person of that gender. All those decisions must be made <em>now</em>.
 				</td>
 				<td class="head"><span>Safe drawbacks</span>
@@ -972,186 +895,186 @@ var svg_data = {
 		</table>
 		</table>
 		<!-------------------------------------------------------------------------------------------------------------------------------------------->
-		<table>
+		<table id="powers">
 			<tr>
-				<td colspan="8" class="p"><h1>Powers</h1>
+				<td colspan="8"><h1>Powers</h1>
 				</td>
 			</tr>
 			<tr>
-				<td class="p"><span class="m">Strength</span>
+				<td><span class="s5">Strength</span>
 					You gain superhuman strength. Using that strength can’t cause you damage and doesn't tire you more than normal strength.
 				</td>
-				<td colspan="1" class="p"><span class="h">Invulnerability</span>
+				<td><span class="s7">Invulnerability</span>
 					<em>During activation</em>, you regenerate very rapidly any physical damage you may already have and are invulnerable to all external physical damage. You will still feel the pain that damage would cause to you, though.
 				</td>
-				<td class="p"><span class="m">Teleport</span>
+				<td><span class="s5">Teleport</span>
 					<em>During activation</em>, the ring allows you to teleport instantly to any place you can see directly (up to 4km|2.5mi) or have been to. Does not teleport you between realms.
 				</td>
-				<td class="p"><span class="t">Never Sleep</span>
+				<td><span class="s3">Never Sleep</span>
 					<em>During activation</em>, you do not need to sleep, always feel rested and are never tired due to lack of sleep. You can still sleep if you want to without consequences.
 				</td>
-				<td colspan="1" class="p"><span class="m">Immunity</span>
+				<td><span class="s5">Immunity</span>
 					<em>During activation</em>, you are cured of any diseases you may have (unless you specifically don’t want to be cured of it), and you become immune to all diseases, poisons, venoms, radiation, and allergens until deactivation.
 				</td>
-				<td class="p"><span class="t">Painless</span>
+				<td><span class="s3">Painless</span>
 					You cannot feel physical pain unless you want to. You can also choose at any time what kinds of pain you want to feel.
 				</td>
-				<td class="p"><span class="m">Gifted</span>
+				<td><span class="s5">Gifted</span>
 					Choose <em>now</em> any subject, and you will become as competent as the most competent person in that specific subject currently is or has ever been. Can be taken multiple times on the same ring.
 				</td>
-				<td colspan="2" class="p"><span class="m">Time Stop</span>
-					<em>Upon activation</em>, you can select any amount of people by looking at them or remembering their face, for up to a week of selection. You can then stop the time of their minds; everything will continue on normally, but their mind will just skip everything until you resume time (the ring cannot be taken off during this time). However, you can only stop their minds for as much time as you’ve worn the ring since you last used this power (for example, you can stop their minds for up to a week if you’ve worn the ring for a week without using the power, or if you've worn the ring for a week since you’ve last used this power).
+				<td><span class="s3">Pro-choice</span>
+					You can now become sterile on command, are aware of any pregnancy you have, and can abort any pregnancy you’re having at any time.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="1" class="p"><span class="m">No Sustenance</span>
+				<td><span class="s5">No Sustenance</span>
 					<em>During activation</em>, you do not need any food, water or air to live, and you won’t thin down or feel hunger, thirst or asphyxiation no matter the case. You can still eat normally without any unusual effects.
 				</td>
-				<td colspan="1" class="p"><span class="t">Polylingual</span>
+				<td><span class="s3">Polylingual</span>
 					<em>During activation</em>, you are as fluent as can be in all existing languages, including natural languages, constructed languages and programming languages, written and oral.<br/><br/>Enjoy the Ithkuil.
 				</td>
-				<td colspan="3" class="p dl"><span class="h">Eternal Youth</span>
+				<td class="child-left" colspan="3"><span class="s7">Eternal Youth</span>
 					Choose a target age <em>now</em>. <em>Upon activation</em>, you are brought to this age at the rate at which you normally age. No matter whether you are younger or older. When the target age is reached, you stop aging. <em>Upon deactivation</em>, you start aging again at normal speed from the target age.
 				</td>
-				<td colspan="1" class="p do"><span class="t">Pocket Space</span>
+				<td class="child"><span class="s3">Pocket Space</span>
 					You now constantly have access to a pocket dimension in which you can store about anything (including people) that you can physically carry, except yourself. Each ring with this power has its own pocket space. You have a different pocket space in each realm. Also, time is stopped in the pocket dimension when you’re not accessing it.
 				</td>
-				<td colspan="2" class="p do"><span class="h">Magical Realm</span>
+				<td class="child" colspan="2"><span class="s7">Magical Realm</span>
 					<em>During activation</em>, you can at any time travel to a parrallel low-fantasy medieval magical realm and back. At each travel from one realm to another, you will be teleported to the place nearest to where you left. The first time you arrive, you will be in a small village. Nothing other than you and your rings can travel between realms. That realm will forever be populated with humans with a mentality close enough to that of current earth. You will start as a total stranger to that society, but they can speak any language you can speak (Choose which on <em>now</em>). If this power deactivates, you are taken back to the normal world. Drawbacks that are carried out with technology in the normal world are carried out with magic in the magical realm.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="p"><span class="m">Ideal Match</span>
+				<td colspan="2"><span class="s5">Ideal Match</span>
 					<em>Upon Activation</em>, you meet a person that you must describe <em>now</em> (that description must still be somewhat realistic, and can include psychological features, such as being in love with you). However, <em>upon deactivation</em>, that person must leave you and not communicate with you. He/She has their own backstory, continues to live their life on their own and retains their memory between activations, but cannot communicate or meet you in any way when this power is deactivated. Challenging this may result in harm being caused to that person.
 				</td>
-				<td class="p u"><span class="t">Quick Change</span>
+				<td class="parent"><span class="s3">Quick Change</span>
 					The change is now nine times faster. However, when you take the ring off, you start to age nine times faster for as long as you wore the ring.
 				</td>
-				<td colspan="1" class="p u"><span class="t">Easy Changer</span>
+				<td class="parent"><span class="s3">Easy Changer</span>
 					You can now change the target age at any time.
 				</td>
-				<td rowspan="2" class="p"><span class="t">New Normal</span>
+				<td rowspan="2"><span class="s3">New Normal</span>
 					<strong>This may only be purchased on your first ring</strong>. 1/4th of the world population is changed, and added to the pool of <em>genders</em>. Choose <em>now</em> between features of both genders, including genitals. It can have a penis, a vagina, both, but not none. You can also designate an average height and weight bmi, but only those found in normal humans. Can be purchased additional times, but will be split among the same 1/4th.
 				</td>
-				<td colspan="2" class="p do u"><span class="h">Singular Space</span>
+				<td class="parent child" colspan="2"><span class="s7">Singular Space</span>
 					Your pocket space is now shared between realms.
 				</td>
-				<td class="p do u"><span class="m">Higher Up</span>
+				<td class="parent child"><span class="s5">Higher Up</span>
 					<em>Upon activation</em>, you start with a fairly higher-up social position. You have a manor and are guaranteed a relatively stable source of income from your thirty serfs; but who knows how things may turn out. <em>Upon deactivation</em>, you are no longer recognized as the person who owns the manor or the serfs.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" class="p do"><span class="t">Metamorphosis</span>
+				<td class="child" colspan="4"><span class="s3">Metamorphosis</span>
 					Choose <em>now</em> an entire physical appearance for your age and gender. You are limited to what would generally be found in people of your gender and age. For <strong>New Normal</strong>'s sex, you must adhere to their average height and weight bmi if specified. <em>During activation</em>, you transform into that form. You continue to age normally, and your age is carried through all your physical appearances. This is affected by <strong>Porn Logic</strong>
 				</td>
 
-				<td colspan="2" class="p u"><span class="h">Stargate</span>
+				<td class="parent" colspan="2"><span class="s7">Stargate</span>
 					You can now, in each realm, build Stargate-sized gates that allow two-way communication and travel through the realms. Only the last stargate built in each realm works.
 				</td>
-				<td class="p u"><span class="h">King in the North</span>
+				<td class="parent"><span class="s7">King in the North</span>
 					You now start as the king of a small country. Grants a lot of power, but your position as king takes a lot of responsibility and work to stay unchallenged. Same rules as <strong>Higher Up</strong>.
 				</td>
 			</tr>
 			<tr>
-				<td class="p u"><span class="t">Shapeshifting</span>
+				<td class="parent"><span class="s3">Shapeshifting</span>
 					You can now re-choose your metamorphosis appearance up to once a day
 				</td>
-				<td class="p u"><span class="t">Deception</span>
+				<td class="parent"><span class="s3">Deception</span>
 					<em>During activation</em>, everyone (except specific people which you can choose now) will think that your metamorphosis appearance is how you always looked. When looking at photographs of you, they will see your metamorphosis appearance instead.
 				</td>
-				<td colspan="2" class="p u"><span class="t">Inhuman</span>
+				<td class="parent" colspan="2"><span class="s3">Inhuman</span>
 					You can now include inhuman features, including fantasy ones, as long as you remain of flesh and blood and somewhat humanoid. You can also specify another size as well (by a factor of three in both ways), but the change to your new size will be progressive (around 1m/3.28ft per day), including when this power deactivates
 				</td>
-				<td class="p"><span class="m">Optivision</span>
+				<td><span class="s5">Optivision</span>
 					You can now see very far away, through walls and other thin surfaces, and in infrared. All can be activated and deactived on command.
 				</td>
-				<td class="p"><span class="t">Futanari</span>
+				<td><span class="s3">Futanari</span>
 					Choose <em>now</em> between features of both genders, including genitals. You can have a penis, a vagina, both, but not none. Can be changed with <strong>Shapeshifting</strong>.
 				</td>
-				<td class="p dr do"><span class="t">Empathy</span>
+				<td class="child"><span class="s3">Empathy</span>
 					You can know what other people are feeling
 				</td>
-				<td class="p"><span class="m">Vanilla</span>
+				<td><span class="s5">Vanilla</span>
 					Unless this is explicit goal of a drawback, people will find what you do normal and, while not doing it themselves, will not be shocked or revolted, or shame you for what the drawbacks cause you to do. They will still want to take advantage of you as much as before, however.
 				</td>
 			</tr>
 			<tr>
-				<td class="p do"><span class="m">Attracted</span>
+				<td class="child"><span class="s5">Attracted</span>
 					Drawbacks on this ring involving other people (indicated with a <img class="na g_svg"/>) will now only involve people of the gender to which you are the most attracted. You can also take this power but keep both genders involved.
 				</td>
-				<td class="p do"><span class="h">Battlestation</span>
+				<td class="child"><span class="s7">Battlestation</span>
 					<em>Upon activation</em>, the first computer you touch will have its processing speed and memory magically increased by a factor of 1024. This will disappear <em>upon deactivation</em>.
 				</td>
-				<td class="p do"><span class="t">Flying</span>
+				<td class="child"><span class="s3">Flying</span>
 					<em>During activation</em>, you can fly. Your speed is similar to that of an eagle. If this power is suddenly interrupted while flying, you will slowly glide downwards until you land safely.
 				</td>
-				<td class="p do" colspan="2"><span class="m">Sharing is Caring</span>
+				<td class="child" colspan="2"><span class="s5">Sharing is Caring</span>
 					Rings crafted with this power can only be put on voluntarily by people other than you. Before being worn, the ring will explain to the person holding it the entirety of its effects. The ring cannot be put on someone who feels they’re being forced to put it on, must be in full capacity to make the decision to put on the ring. In a similar way, a person cannot be forced to keep wearing the ring. If the ring has the <strong>permanent</strong> drawback, that drawback only kicks in one month after the ring is put on.
 				</td>
-				<td class="p do"><span class="t">Welfare Leech</span>
+				<td class="child"><span class="s3">Welfare Leech</span>
 					Every week while this power is activated, wherever you are, you will somehow gain the local equivalent of 1000 modern U.S. dollars, adjusted with inflation.
 				</td>
-				<td class="p u do"><span class="m">Communication</span>
+				<td class="parent child"><span class="s5">Communication</span>
 					You can communicate telepathically with other people.
 				</td>
-				<td class="p"><span class="m">Lottery</span>
+				<td><span class="s5">Lottery</span>
 					When you take this power, throw a fair coin <em>now</em>. On heads, you gain 12 points. On tails, you gain nothing. In both cases, you must still pay for this power.
 				</td>
 			</tr>
 			<tr>
-				<td class="p u"><span class="t">Refined</span>
+				<td class="parent"><span class="s3">Refined</span>
 					Drawbacks on this ring involving other people (<img class="na g_svg"/>) will now only involve people whom you find attractive. That criteria may loosen over time if the resulting amount of people is too small.
 				</td>
-				<td class="p u"><span class="h">Halting Solution</span>
+				<td class="parent"><span class="s7">Halting Solution</span>
 					That computer now gains the magical ability to determine if an arbitrary given program halts on an arbitrary given input. This takes O(n).
 				</td>
-				<td class="p u"><span class="m">Noclip</span>
+				<td class="parent"><span class="s5">Noclip</span>
 					You can now pass through solid matter. This can be activated or deactivated on command. If this power is suddenly interrupted, you will be able to stay noclipped until you find a place where you can re-materialize.
 				</td>
-				<td class="p u"><span class="t">Sneaky</span>
+				<td class="parent"><span class="s3">Sneaky</span>
 					<em>During activation</em>, you may keep one <em>other</em> ring with <strong>sharing is caring</strong> from revealing one of the drawbacks. Can be taken multiple times.
 				</td>
-				<td class="p u"><span class="t">Safety Measure</span>
+				<td class="parent"><span class="s3">Safety Measure</span>
 					Powers on rings crafted with this power cannot be used to target or attack the person that crafted this ring.
 				</td>
-				<td class="p u"><span class="m">Loadsamoney</span>
+				<td class="parent"><span class="s5">Loadsamoney</span>
 					The amount is increased twelve-fold.
 				</td>
-				<td class="p u do"><span class="t">Mindreader</span>
+				<td class="parent child"><span class="s3">Mindreader</span>
 					You can read people's thoughts. One person at a time, and it takes a second to activate or deactivate.
 				</td>
-				<td class="p"><span class="t">Need a Hand?</span>
+				<td><span class="s3">Need a Hand?</span>
 					You gain two extra limbs with the full strength and usability of your arms.  Alternatively, if you have the limbs already, you may upgrade the functionality of up to 4 existing limbs to have fine manipulation.  You may take this multiple times, even on the same ring.
 				</td>
 			</tr>
 			<tr>
-				<td class="p"><span class="t">Pro-choice</span>
-					You can now become sterile on command, are aware of any pregnancy you have, and can abort any pregnancy you’re having at any time.
+				<td><span class="s5">Time Stop</span>
+					<em>Upon activation</em>, you can select any amount of people by looking at them or remembering their face, for up to a week of selection. You can then stop the time of their minds; everything will continue on normally, but their mind will just skip everything until you resume time (the ring cannot be taken off during this time). However, you can only stop their minds for as much time as you’ve worn the ring since you last used this power (for example, you can stop their minds for up to a week if you’ve worn the ring for a week without using the power, or if you've worn the ring for a week since you’ve last used this power).
 				</td>
-				<td class="p" rowspan="1" colspan="1"><span class="t">Tentacles</span>
+				<td><span class="s3">Tentacles</span>
 					You sprout 1 to 4 tentacles with the form of your choosing, chosen <em>now</em>.  They are limited to 1.2 meters of length and 20 centimeters of diameter.  You can also have them tipped with functional mouths, sex organs, and sensory organs. They will regrow in a week if removed.  They do not allow for fine manipulation.  May be taken multiple times, even on the same ring, for extra tentacles.
 				</td>
-				<td class="p" colspan="1"><span class="m">Spread Fetish</span>
+				<td><span class="s5">Spread Fetish</span>
 					You can will selected people to develop the fetish of your choosing for a chosen period of time, between 2 weeks and one year.  This interest phases in over the course of a week and disappears at double the rate when the ring is <em>deactivated</em>.
 				</td>
-				<td class="p" colspan="1"><span class="t">Porn Logic</span>
+				<td><span class="s3">Porn Logic</span>
 					<strong>This may only be purchased on your first ring</strong>. Choose <em>now</em> which genders and a percentage. The percentage increases the size of the world's average sexual attributes. This applies to everything such as mens' dicks, or womens' asses and tits. The maximum is a 100% increase, for example, 15 centimeter (6 inch) dicks become 30 centimeter (footlong) dicks. All insertion occurs without problem. Removes <em>waste</em> while activated, and prevents health complications from poor hygiene.
 				</td>
-				<td class="p"><span class="m">Damage</span>
+				<td><span class="s5">Damage</span>
 					You gain a means to hurt people and damage objects. This may take the form of a lightsaber, eyebeams, or just crazy chi powers. Choose something <em>now</em> Whatever it is, it can get you through a door in a second, and a bank vault in five, or kill one normal person per second in combat
 				</td>
-				<td class="p do"><span class="t">Animal Empathy</span>
+				<td class="child"><span class="s3">Animal Empathy</span>
 					Animals like you, you are aware of their immediate emotional state, and you can make yourself understood to them on an emotional level.
 				</td>
-				<td class="p u do"><span class="m">Mind<br/>Control</span>
+				<td class="parent child"><span class="s5">Mind<br/>Control</span>
 					You can control people's thoughts and give them orders telepathically. You can only control one person at a time, they must be in sight when you give orders, and orders expire after three hours.
 				</td>
-				<td class="p"><span class="m">The Duplicator</span>
+				<td><span class="s5">The Duplicator</span>
 					<em>Upon activation</em>, select any object by touching it. You will obtain a copy of it after a time proportional to the amount of matter in that object. During this time, the ring cannot be taken off. Copies of living beings arrive dead. For reference, the duration for a laptop is two days. Doesn’t work on enchanted rings.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="5" class="do p"><span class="h">Versatile</span>
+				<td class="child" colspan="5"><span class="s7">Versatile</span>
 					You gain access to a new power or remove the effect of a chosen drawback, with the following rules:
 					<br>-One power or drawback at a time
 					<br>-The power must cost 3 or the drawback worth 1
@@ -1159,86 +1082,86 @@ var svg_data = {
 					<br>-You must satisfy the requirements for the power or have no other drawbacks that have the mitigated drawback as a requirement.
 					<br>-All standard rules for ring creation must be satisfied as if your ring had that power or did not have that drawback.
 				</td>
-				<td class="p u do"><span class="t">Druid</span>
+				<td class="parent child"><span class="s3">Druid</span>
 					You can talk to animals. If you have Communication, you can do so telepathically.  Any of them close enough for contact will warn you of danger.
 				</td>
-				<td class="p u"><span class="h">Puppet<br/>Master</span>
+				<td class="parent"><span class="s7">Puppet<br/>Master</span>
 					Your <strong>Mind Control</strong> power can now control up to seven people at once.
 				</td>
-				<td class="p do"><span class="t">Jolt</span>
+				<td class="child"><span class="s3">Jolt</span>
 					You now have telekinetic powers. You can impose a sphere-shaped force of 10N/2.2 pounds, like pushing on something with a pillow. This lets you move objects, but not very well.
 				</td>
 			</tr>
-				<td class="p u"><span class="t">Wider Range</span>
+				<td class="parent"><span class="s3">Wider Range</span>
 					Your powers chosen through <strong>Versatile</strong> can now be worth 5 points or your drawbacks worth 2.  You may also select two drawbacks worth 1 each instead.  All other rules apply.  You may not select <strong>Lottery</strong> or <strong>Sharing is Caring</strong>.
 				</td>
-				<td colspan="2" class="p u"><span class="h">Evil Genie</span>
+				<td class="parent" colspan="2"><span class="s7">Evil Genie</span>
 					You may grant the wishes for power of other people at the cost of drawbacks.
 					<br>The wishes must clearly follow a power that they meet the qualifications for. One power per wish. The drawbacks attached must at least balance that power. They must consent to each drawback unless you can construe the drawback from their phrasing of the wish.  These powers and drawbacks operate as if they had <strong>Full-Time</strong>, but they do not receive those points.
 					<br>You cannot grant your own wishes or the wishes of someone connected to you by a slave ring, ring of ownership, or <strong>Submissive</strong>.  You cannot grant more than one wish per week.  You cannot grant a wish to the same person more than once every year and a day.  No wish can be used to remove the effects of a previous wish.
 				</td>
-				<td colspan="2" class="p u"><span class="m">Power Storing</span>
+				<td class="parent" colspan="2"><span class="s5">Power Storing</span>
 					Any excess points you have on this ring or combination of rings including this one, may be retained at one excess = one stored point/day.  You may then use these stored points to gain the effect of powers or mitigate drawbacks.
 					<br>Stored points are spent to produce an effect like <strong>Versatile</strong> for one week, but you can choose higher cost powers or drawbacks.  You may have only one power gain or drawback mitigated at a time with this power, this is in addition to the one available by <strong>Versatile</strong>.  The costs are 14 x base cost for powers and 21 x base return for drawbacks.  If you qualify for a power only because of a use of <strong>Versatile</strong> you lose the effect immediately if required power is replaced.  Points only store if they are available for 24 hours.  You can hold no more than 200 points at a time.
 				</td>
-				<td class="p u"><span class="m">Aquaman</span>
+				<td class="parent"><span class="s5">Aquaman</span>
 					Pick a taxonomic class of animals, <em>now</em>.  You can now order any animal of that class to do your bidding.  If you took <strong>Strange World</strong> anatomically-similar beasts that are not sentient can be pacified (not commanded) and those that are, are favorably disposed toward you.
 				</td>
-				<td colspan="1" class="p do dt"><span class="h">Magic</span>
+				<td class="child"><span class="s7">Magic</span>
 					You now have untaught magic powers. If you also have <strong>Magical Realm</strong> you can choose to be an apprentice. Otherwise you'll have to teach yourself.
 				</td>
-				<td class="p u do"><span class="t">Telekinesis</span>
+				<td class="parent child"><span class="s3">Telekinesis</span>
 					You now have full-on telekinesis. You're about as strong as a normal adult male with two hands. You can create more hands, or lift liquids, but you get weaker as you do.
 				</td>
 			</tr>
 			<tr>
-				<td class="p"><span class="m">Possession</span>
+				<td><span class="s5">Possession</span>
 					You can now possess the body of anyone you see directly for up to an hour every day. They are fully aware of the fact that their body is now moving on its own, but are powerless to help it.
 				</td>
-				<td class="p"><span class="t">Heightened Senses</span>
+				<td><span class="s3">Heightened Senses</span>
 					Your senses are unnaturally powerful.  The effective range for each is now four times normal and you can perceive finer details.  This applies to any <strong>Extraordinary Sense</strong> you may have.
 				</td>
-				<td class="p" colspan="2"><span class="t">Extraordinary Sense</span>
+				<td colspan="2"><span class="s3">Extraordinary Sense</span>
 					Choose <em>now</em> one sort of perception not normally available to humans, you can now sense this effectively up to 50 meters.  Examples for this include: infrared, electrical charges, magic abilities/properties, etc.
 				</td>
-				<td class="p do"><span class="t">Blind Sight</span>
+				<td class="child"><span class="s3">Blind Sight</span>
 					Unspecified use of your other senses give you the ability to "see" anything in a 10 meter radius of you, including strange angles.
 				</td>
-				<td class="p do"><span class="t">Flexible Body</span>
+				<td class="child"><span class="s3">Flexible Body</span>
 					You body becomes very flexible. You could very easily become a contortionist.
 				</td>
-				<td class="p do u"><span class="h">Magus</span>
+				<td class="parent child"><span class="s7">Magus</span>
 					You're now skilled in magic, equivalent to a 200 point GURPS, or a 6th level D&D Wizard.
 				</td>
-				<td class="p u"><span class="m">Force of Mind</span>
+				<td class="parent"><span class="s5">Force of Mind</span>
 					Your telekinesis produces much more force, up to 80 tons, enough to lift most tanks.
 				</td>
 			</tr>
 			<tr>
-				<td class="p" colspan="2"><span class="m">Goa’uld</span>
+				<td colspan="2"><span class="s5">Goa’uld</span>
 					You have an aura that makes people think that you are special. If you put up a nice enough act and pass your drawbacks for rituals, perhaps you’ll be able to convince people that you are, incarnate, represent, or are sent by some kind of deity and create a sect. You could also become a quite charismatic political leader, but careful of scandals. Can be targeted on specific people only or completely disabled and re-enabled, both on command at any time.
 				</td>
-				<td class="p" colspan="1"><span class="t">Lay On Hands</span>
+				<td><span class="s3">Lay On Hands</span>
 					Twice per day, you can heal another person.  This functions as if they had just <em>activated</em> a ring with <strong>Invulnerability</strong> and <strong>Immunity</strong>.  You may not use this on yourself.
 				</td>
-				<td class="p"><span class="t">Ron Paul</span>
+				<td><span class="s3">Ron Paul</span>
 					Real life now looks like an anime (choose which artstyle <em>now</em>). People find that normal. Things still interact normally, they are just perceived as with an anime appearance by humans unless looked at with great detail (so this doesn’t break biology and the such).
 				</td>
-				<td class="p u"><span class="m">Awareness</span>
+				<td class="parent"><span class="s5">Awareness</span>
 					You can leverage your <strong>Blind Sense</strong> ability through better reflexes.  Effectively you are aware of any threat (including its exact nature) in your 10 meter sense range the moment it enters or when it starts to move against you.
 				</td>
-				<td class="p u"><span class="m">Amorphous</span>
+				<td class="parent"><span class="s5">Amorphous</span>
 					Your body is effectively a liquid.  You may change your shape at will.  You may alter your consistency on the range between water and a thick gel.  You will still technically have organs and other parts within your mass which can be injured as normal.  You can adjust your size in either direction by 10%, but this changes your density, which is equal to water by default.  You can only maintain and concentrate on the same number of appendages as you had limbs before and with the same degree of control.
 				</td>
-				<td class="p u"><span class="s">Archmage</span>
+				<td class="parent"><span class="s9">Archmage</span>
 					You now have incredibly powerful magic, equivalent to a 12th level D&D wizard.
 				</td>
-				<td class="p"><span class="m">Superluminal</span>
+				<td><span class="s5">Superluminal</span>
 					All rings that say their effect through space is instantaneous actually lie. Their effect and all information they can convey go at near light speed. While this <strong>superluminal</strong> is effective, however, the wearers of all rings bearing it can either (choose <em>upon activation</em>) communicate instantaneously or, <em>upon activation</em>, bless the first device they touch with the capacity to communicate instantaneously with other similarly-blessed devices <em>until deactivation</em>. Can be taken multiple times (if you want to bless multiple devices, for example).
 				</td>
 			</tr>
 			<tr>
-				<td class="p" colspan="4" rowspan="4"><span class="m">Ring of Domination</span>
+				<td rowspan="4" colspan="4"><span class="s5">Ring of Domination</span>
 					This power is very special: it allows you to gain points through being dominant rather than submissive.
 					<br/><br/>
 					This powers allows you to craft an associated slave ring. That slave ring comes with <strong>sharing is caring</strong> for free and will be linked to this ring. This ring doesn’t need to be crafted with a positive amount of credits anymore, but there must be enough drawbacks across both rings to compensate the costs of the powers across both rings. Both ring’s drawbacks apply as soon as they are worn; however, their powers only while both rings are being worn. <strong>Sharing is caring</strong> on the slave ring applies at all times.
@@ -1256,7 +1179,7 @@ var svg_data = {
 					<br/>- You can change the jobs on the slave ring every few months unless <strong>fixed job</strong> is taken, but only the wearer of this ring can change them.
 					<br/>- You can change the drawbacks on the slave ring every year as long as it’s not being worn or the wearer of the slave ring agrees to all changes when you do so. Doesn’t apply to jobs. There must still be enough drawbacks to compensate for the cost of the powers for both rings.
 				</td>
-				<td class="p do" colspan="4"><span>Ring of Devotion</span>
+				<td class="child" colspan="4"><span>Ring of Devotion</span>
 					This is the submissive counterpart to <strong>ring of domination</strong>: it allows yourself to devote yourself to someone. That person must agree to it. Obviously, cannot be taken on the same ring as <strong>ring of domination</strong>; however, different rings with those powers can be worn simultaneously.
 					<br/><br/>
 					Rings bearing this power (“rings of devotion”) allow you to craft one “ring of ownership”, which you will give to the person you wish to devote yourself to, your “master”. The ring of ownership can only bear powers, and the sum of all points in both rings must be non-negative. The ring of ownership comes with <strong>sharing is caring</strong> for free. Only when both rings are being worn at the same time do their effects affect their respective wearer. If only the ring of devotion is being worn, only its drawbacks apply.<br/>
@@ -1271,15 +1194,15 @@ var svg_data = {
 				</td>
 			</tr>
 			<tr>
-				<td class="p u" colspan="4"><span class="t">Limited Devotion</span>
+				<td class="parent" colspan="4"><span class="s3">Limited Devotion</span>
 					You are now allowed to refuse a change of drawbacks. This does not apply to jobs.
 				</td>
 			</tr>
 		</table>
 		<!---------------------------------------------------------------->
-		<table>
+		<table id="drawbacks">
 			<tr>
-				<td class="d" colspan="8"><h1>Drawbacks</h1>
+				<td colspan="8"><h1>Drawbacks</h1>
 					<img class="na p_svg"/> indicates that a drawback uses the word <em>must</em>. <strong>Important</strong>: a punishment has to be selected for each such drawback.<br/>
 					<img class="na u_svg"/> indicates that a drawback requires a consequent population to be around. <strong>Important</strong>: if you’re not in an urban area or live extremely reclusively while wearing a ring with such drawbacks, the powers will slowly fade (or new drawbacks will appear). They disappear completely after a few months, and take a few months (with the ring being worn) to come back.<br/>
 					<img class="na g_svg"/> indicates that a drawback may involve arbitrary people. By default, this will only include adults outside of your <em>family</em>. Some drawbacks and powers can affect who is involved.<br/>
@@ -1288,70 +1211,70 @@ var svg_data = {
 				</td>
 			</tr>
 			<tr>
-				<td class="d do" colspan="7"><span class="t">Occupation<img class="p_svg"/></span>
+				<td class="child" colspan="7"><span class="a1">Occupation<img class="p_svg"/></span>
 					You must go to the jobs you select; not doing so will temporarily stop your job income as well as that of <strong>welfare leech</strong> and <strong>loadsamoney</strong>. If you perform very badly on any of these jobs, the income from all sources other than that job will be blocked until you perform at least a bit well again.<br/><br/>The starting income of each job is the number of points it rewards multiplied by the local equivalent of a 1000 modern dollars per month, adjusted with inflation. This can go up if you work well, but also down if you do a shit job. The number of days each job takes is written in brackets for each job. All (and only) requirements that require <strong>occupation</strong> count as jobs for the rings, except for <strong>local idol</strong> and <strong>fixed job</strong>.<br/><br/>In general, the jobs are a bit flexible: they’ll offer vacation if you work well enough, and will allow you to take a few days off every now and then. However, if you miss three consecutive days of work while this drawback is active, the punishment you chose for this drawback will trigger. For this reason, it is recommended to keep your jobs on a ring you can take off if you ever want to take a long vacation or completely drop a job.
 				</td>
-				<td rowspan="1" class="do d"><span class="t">Ready</span>
+				<td class="child"><span class="a1">Ready</span>
 					You are hard/wet at all times. Only affects arousal if you pay attention to it.
 				</td>
 			</tr>
 			<tr>
-				<td class="d do u" colspan="3"><span class="t">Local Idol<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="parent child" colspan="3"><span class="a1">Local Idol<img class="u_svg"/><img class="p_svg"/></span>
 					You will now be locally known as a Japanese-style idol. You will often be recognized in the street and talked to; you must be nice to them. Careful of the occasional stalker, though. This is just a social status and does not earn you any income in itself. You also have a manager to take care of all the administrative stuff and let you focus on your job(s).
 				</td>
-				<td rowspan="1" class="d u do"><span class="t">Public Report<img class="u_svg"/></span>
+				<td class="parent child"><span class="a1">Public Report<img class="u_svg"/></span>
 					[1 day/week] Every week, you must make a live public report in a conference room that will be provided to you on how you were affected by drawbacks since the last report. The less you tell, the more you’ll be asked; except for revealing trigger words, you must answer all questions about your drawbacks.
 				</td>
-				<td rowspan="1" class="d u do"><span class="m">Mascot<img class="u_svg"/></span>
+				<td class="parent child"><span class="a2">Mascot<img class="u_svg"/></span>
 					[2 days/week] You will serve as a kind of public advertising mascot. You will stand outside of a store and try to attract customers. To get their attention and give a good image, you’ll want to make yourself look good.
 				</td>
-				<td rowspan="1" class="d u do"><span class="m">Stripper<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a2">Stripper<img class="u_svg"/><img class="g_svg"/></span>
 					[1 day/week] You will work as as stripper or some other kind of lewd performer.
 				</td>
-				<td rowspan="1" class="d u"><span class="m">Maid<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Maid<img class="u_svg"/><img class="g_svg"/></span>
 					[1 day/week] You will work as a maid for a rich family with bratty children or a maid cafe. Pick which one <em>now</em>
 				</td>
-				<td rowspan="1" class="u d"><span class="m">Horny</span>
+				<td class="parent"><span class="a2">Horny</span>
 					You feel effectively horny about half of the time you’re awake, randomly. You can focus on other things, but the urge will remain.
 				</td>
 			</tr>
 			<tr>
-				<td class="d do u"><span class="m">Idol Show<img class="u_svg"/></span>
+				<td class="parent child"><span class="a2">Idol Show<img class="u_svg"/></span>
 					[1 day/week] You must produce a small live show every week. The required infrastructure will be provided to you. There are high standards in the industry; you better have something nice prepared.
 				</td>
-				<td class="d do u"><span class="t">Model<img class="u_svg"/></span>
+				<td class="parent child"><span class="a1">Model<img class="u_svg"/></span>
 					[1 day/week] You must go to a photo shoot every week, where you will put on lots of cute/handsome idol outfits.
 				</td>
-				<td class="d do u"><span class="t">Seiyuu<img class="u_svg"/></span>
+				<td class="parent child"><span class="a1">Seiyuu<img class="u_svg"/></span>
 					[1 day/week] You work part-time as a voice actor one full day a week. Unless you speak Japanese, you will be dubbing anime in the language of your choice.
 				</td>
-				<td rowspan="1" class="d u"><span class="m">Public Service<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Public Service<img class="u_svg"/><img class="g_svg"/></span>
 					[1 more day/week] At the end of your report, you must “service” some members of the audience that have been randomly selected.
 				</td>
-				<td class="d u"><span class="t">Slum Mascot<img class="u_svg"/></span>
+				<td class="parent"><span class="a1">Slum Mascot<img class="u_svg"/></span>
 					[1 more day/week] Your <strong>mascot</strong> work will now take place in the local slums. Expect quite a lot of sexual harassment.
 				</td>
-				<td class="d u do dr"><span class="m">Prostitute<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a2">Prostitute<img class="u_svg"/><img class="g_svg"/></span>
 					[1 more day/week] You work as a prostitute, plain and simple. You’ll be working for whole evenings about four days a week. Replaces <strong>stripper</strong>.
 				</td>
-				<td rowspan="1" class="do dr d"><span class="m">Erogenous</span>
+				<td class="child"><span class="a2">Erogenous</span>
 					At a random time for two continuous hours every day while you are awake, your whole body will become an erogenous zone. The sensitivity of your usual erogenous zones is also greatly increased.
 				</td>
-				<td rowspan="1" class="d"><span class="m">Rape Touch<img class="u_svg"/><img class="g_svg"/></span>
+				<td><span class="a2">Rape Touch<img class="u_svg"/><img class="g_svg"/></span>
 					Every person you touch for the first time has a 1/4 chance to be extremely compelled to rape you. If people are around, they will either try to take you somewhere private by force, or invite the others to join in.
 				</td>
 			</tr>
 			<tr>
-				<td rowspan="2" class="d u"><span class="t">Lewd Show<img class="u_svg"/></span>
+				<td class="parent" rowspan="2"><span class="a1">Lewd Show<img class="u_svg"/></span>
 					[1 more day/week] At the end of your show, when only adults are left, you must go through a lewd show. Nothing as crude as stripping, mind you; you’re only asked to keep your audience entertained by adding a little lust to whatever performance you’re doing. Because of the late night, you will only leave the day afterwards; you will also spend more time preparing. A yo-yo and a pineapple might help.
 				</td>
-				<td rowspan="1" class="d u do"><span class="t">Gravure<img class="u_svg"/></span>
+				<td class="parent child"><span class="a1">Gravure<img class="u_svg"/></span>
 					[1 more day/week] Your photo shoots will now have a second part, focusing less on the outfits, and more on what they’re hiding. No nudity, but not far from it.
 				</td>
-				<td class="d do u"><span class="t">H-Hentai !<img class="u_svg"/></span>
+				<td class="parent child"><span class="a1">H-Hentai !<img class="u_svg"/></span>
 					[1 more day/week] The voice actor market is pretty saturated. If you want more voice acting work, it’s going to be hentai.
 				</td>
-				<td rowspan="2" colspan="2" class="d"><span>I’m Feeling Lucky</span>
+				<td rowspan="2" colspan="2"><span>I’m Feeling Lucky</span>
 					This drawback has no cost by itself and can be taken multiple times. You may take it at any point during your selection of effects, but it is optimal to take it before you take any other drawback. Each time you take it, do the following:<br/><br/>
 					Roll a random number between 0 and <b style="font-weight:normal" id="maxroll"></b>. Note: you can use http://random.org/integers to generate numbers.
 					<br/><br/>Locate the associated drawback using the grey number below the number of points obtained. Then, choose <em>now</em> between the following options:
@@ -1359,1018 +1282,1017 @@ var svg_data = {
 					<br/><br/>2. Refuse that drawback and reroll. You lose 4 — (the reward of the most rewarding drawback you could have taken by going through option <strong>1</strong>) points.
 					<br/><br/>If you can reassign drawback points with <strong>ring of devotion</strong> and <strong>ring of domination</strong>, you must reassign all points they made you gain through random rolling, including the possible <strong>full random</strong> bonus.
 				</td>
-				<td class="d u"><span class="m">Ho<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Ho<img class="u_svg"/><img class="g_svg"/></span>
 					[1 more day/week] You have a pimp. He beats on you, and takes your money.
 				</td>
-				<td rowspan="1" class="u d"><span class="m">Self-control<img class="p_svg"/></span>
+				<td class="parent"><span class="a2">Self-control<img class="p_svg"/></span>
 					During the time your whole body is erogenous, you must not orgasm. If taken with the <strong>Physical reflex</strong> punishment, you also musn’t orgasm for the following two hours.
 				</td>
-				<td class="d"><span class="t">Gloryhole<img class="p_svg"/></span>
+				<td><span class="a1">Gloryhole<img class="p_svg"/></span>
 					You must give service in a gloryhole three times a week. All three times can be in a row. Lack of effort or slow results may entail more work.
 				</td>
 			</tr>
 			<tr>
-				<td class="d u" colspan="1"><span class="m">JAV<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">JAV<img class="u_svg"/><img class="g_svg"/></span>
 					[1 more day/week] You must now go to a porn shoot one full working day a week. You’ll have to endure as much as you’ll have to fake.
 				</td>
-				<td class="d u"><span class="t">Fluid selling</span>
+				<td class="parent"><span class="a1">Fluid selling</span>
 					[0.5 more days/week] Your lewd voice has aroused some creepy stalkers. They are willing to buy your bodily fluids; the more popular you are, the higher they sell. Your manager is willing to handle the selling as long as you “produce” the fluids yourself.
 				</td>
-				<td colspan="2" class="d selectable" id="fullrandom"><span>Full Random</span>
+				<td class="selectable" id="fullrandom" colspan="2"><span>Full Random</span>
 					All drawbacks on this ring (except this one, <strong>I’m feeling lucky</strong>, <strong>occupation</strong>, and drawbacks that require it) must be taken through <strong>I’m feeling lucky</strong>. In exchange, you gain one more point each time you either accept a drawback.  You may still select power corruptions as normal.
 				</td>
-				<td rowspan="1" colspan="1" class="d"><span class="h">Famous<img class="u_svg"/></span>
+				<td><span class="a3">Famous<img class="u_svg"/></span>
 					Your life, and particularly how the drawbacks affect it, will become a casual topic of some media. Generally not in the mainstream, but for a very niche but very active community. Expected to be followed around, filmed, and every thing that happens to you the subject of an article. Reporters love embarrassing stories.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" rowspan="1" class="d do"><span class="h">Chastity Belt<img class="g_svg"/></span>
+				<td class="child" colspan="2"><span class="a3">Chastity Belt<img class="g_svg"/></span>
 					For as long as the ring is <em>activated</em>, a chastity belt appears around you. By default, it only allows for urination and defecation. It is indestructible and cannot be removed. A front panel can be opened to allow penetration and masturbation, but can only be opened using an indestructible key. The key is, by default, hanging from your neck; however, only other people can touch it. You always know where the key is, and it persists when this drawback is inactive. The front panel closes itself automatically after 24 hours.
 				</td>
-				<td colspan="1" class="do dr d"><span class="m">Chastised<img class="p_svg"/><img class="g_svg"/></span>
+				<td class="child"><span class="a2">Chastised<img class="p_svg"/><img class="g_svg"/></span>
 					You mustn’t orgasm unless someone you don’t know explicitly allows you to. You also mustn’t orgasm more than once a week. Cannot be taken together with any drawback that requires you to orgasm or can cause you to orgasm against your will.
 				</td>
-				<td rowspan="1" colspan="1" class="do d"><span class="m">Zentai<img class="p_svg"/></span>
+				<td class="child"><span class="a2">Zentai<img class="p_svg"/></span>
 					For 4 days each week you must wear a full body single colored zentai suit.  You can only remove it for basic body functions (eating, bathroom) and it has opens for sex organs.
 				</td>
-				<td colspan="2" class="d do"><span class="m">Pro-life<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="child" colspan="2"><span class="a2">Pro-life<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					Sexual intercourse involving you that could result in pregnancy has a 100% of doing so. Chemical contraception has a 1/3rd failure rate. Abortion will fail. If you override it with <strong>pro-choice</strong>, you invoke the punishment.
 				</td>
-				<td class="d do" colspan="2"><span class="t">Egg-laying</span>
+				<td class="child" colspan="2"><span class="a1">Egg-laying</span>
 					You occasionally (every other day) lay one small egg through one of your Orifices. Pick which one <em>now</em>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="1" rowspan="1" class="u d"><span class="m">Don't Think About It</span>
+				<td class="parent"><span class="a2">Don't Think About It</span>
 					Unless the chastity belt is open, arousal causes small amounts of pain to your sex organs.  Think unsexy thoughts.
 				</td>
-				<td rowspan="1" colspan="2" class="uo d"><span class="m">Buildup</span>
+				<td class="parent-optional" colspan="2"><span class="a2">Buildup</span>
 					Your orgasms are amplified proportionally to the amount of time you’ve stayed in chastity, and how much you’ve been teased. Careful: your “normal” orgasms may begin to feel tame in comparison.
 				</td>
-				<td colspan="1" class="u d"><span class="t">Dress Up Doll<img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a1">Dress Up Doll<img class="p_svg"/><img class="g_svg"/></span>
 					The zentai suit must now inlude other features, such as head pieces that look like anime characters, maid outfits, etc.  Other random people choose the form of this each day, unless you have a master or a gaurdian (in which case they choose).  If you have <strong>Cross-Dressing</strong> it must follow the not preferred gender standard of that.
 				</td>
-				<td rowspan="3" colspan="1" class="uo d"><span class="h">In Heat</span>
+				<td class="parent-optional" rowspan="3"><span class="a3">In Heat</span>
 					Female or Futa only.  Once per year your body enters an aggressive breeding or estrus cycle.  Your labia swells, turns red, and becomes uncomfortably warm.  You are continuously aroused and will have difficulty refusing sexual demands from men, as if you had <strong>In Need</strong>.  <strong>Pro-Choice</strong> is disabled while this is active and you cannot abort any child produced this way.<br>
 					This ends after you get pregnant, or a week passes.  If you fail to get pregnant, the cycle begins again in 3 weeks.  <em>Deactivating</em> the ring does not remove the symptoms and you remain under the effect of <strong>Pro-Life</strong>, but time spent without the ring does not count toward the 3 week reset.
 				</td>
-				<td class="d do u" colspan="1" rowspan="1"><span class="m">Multiple Birth</span>
+				<td class="parent child"><span class="a2">Multiple Birth</span>
 					Female or futa only.  When pregnant, you will have three times the normal number of children (generally 3 or 4).
 				</td>
-				<td class="d do u" colspan="1"><span class="m">Chicken</span>
+				<td class="parent child"><span class="a2">Chicken</span>
 					The egg(s) is massive. If it is laid vaginally or anally, it's the size of your head, otherwise it is ten times the normal diameter. It is also highly pleasurable.
 				</td>
-				<td class="d do u"><span class="m">Battery</span>
+				<td class="parent child"><span class="a2">Battery</span>
 					You need to lay 3 to 5 eggs every few hours.
 				</td>
 			</tr>
 			<tr>
-				<td class="d"><span class="m">Egocentrism<img class="p_svg"/></span>
+				<td><span class="a2">Egocentrism<img class="p_svg"/></span>
 					You must be featured in all the pornography you watch.
 				</td>
-				<td class="d do" colspan="2" rowspan="1"><span class="m">Rapist<img class="u_svg"/></span>
+				<td class="child" colspan="2"><span class="a2">Rapist<img class="u_svg"/></span>
 					When you have sex with someone, you have a 1/2 chance that they will react as if you were raping them, including interrupting the sex if they manage to break free. This cannot lead to permanent damage or serious wounds, but they will put up a fight. This is their body acting on its own; their mind will still enjoy the sex, and won’t be too bothered by the fact that their body reacts that way. If they manage to interrupt the sex before anyone orgasms, the next time you have sex is guaranteed to trigger this rape reaction.
 				</td>
-				<td rowspan="1" class="d"><span class="h">Incest</span>
+				<td><span class="a3">Incest</span>
 					Deactivates <strong>spare the family</strong>. In addition, all drawbacks that involve other people (<img class="na g_svg"/>) are likely to, from time to time, involve a member of your <em>family</em>. Can only be taken on rings with at least three drawbacks that involve other people.
 				</td>
 
-				<td colspan="3" rowspan="1" class="dr u d"><span class="h">Hive Queen</span>
+				<td class="parent child-right" colspan="3"><span class="a3">Hive Queen</span>
 					Requires vagina for <strong>Egg-Laying</strong>.  Unfertilized eggs now hatch into smaller servitor creatures of your choice (choose <em>now</em>), no more than one half your size.  They have an animalistic intelligence and will default to feeding you, protecting you, and caring for your young, but can handle very simple other instructions.  You do not gain any extra ability to communicate with them.  You now lay eggs as part of your normal reproduction.
 				</td>
 			</tr>
 			<tr>
-				<td class="d"><span class="m">Hobble<img class="u_svg"/><img class="g_svg"/></span>
+				<td><span class="a2">Hobble<img class="u_svg"/><img class="g_svg"/></span>
 					On <em>Activation</em>, hobbles materialize around your ankles. You can only take short little steps. This makes running impossible.
 				</td>
-				<td class="d u" colspan="2"><span class="t">Can’t Help It<img class="u_svg"/></span>
+				<td class="parent" colspan="2"><span class="a1">Can’t Help It<img class="u_svg"/></span>
 					When <strong>Rapist</strong> triggers, you must carry out the rape until either of you have orgasmed, or they’ll think that you raped them afterwards.
 				</td>
-				<td colspan="1" rowspan="1" class="d"><span class="h">Animal Act<img class="p_svg"/><img class="u_svg"/><img class="g_svg"/></span>
+				<td><span class="a3">Animal Act<img class="p_svg"/><img class="u_svg"/><img class="g_svg"/></span>
 					Choose an animal. You must incorporate minor behaviors associated with this animal into your own. Failure to display a hybrid personality will trigger the punishment. Cannot be taken with <strong>Fully Animal</strong>.
 				</td>
 
-				<td colspan="1" class="d"><span class="m">Footwear<img class="p_svg"/></span>
+				<td><span class="a2">Footwear<img class="p_svg"/></span>
 					You must walk only in high heels or jackboots, choose <em>now</em>. You get one day off every week.
 				</td>
-				<td rowspan="1" colspan="2" class="d u"><span class="h">Ovipositor</span>
+				<td class="parent" colspan="2"><span class="a3">Ovipositor</span>
 					You grow a massive squishy white ovipositor, twice the size of the rest of your body.  It makes movement difficult without help.  You now lay your eggs through that and the rate is increased to about one every ten minutes.  Your ovipositor's weight does not factor into limits set by <strong>Inhuman</strong> or any of its offshoots.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="5" class="do d"><span class="h">Bondage Capture<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="child" colspan="5"><span class="a3">Bondage Capture<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					Around three times a month, groups of people will be compelled to capture you, put you in bondage restraints, and leave you alone somewhere. You must let yourself be captured and restrained. Nobody will come to you until you are free. Your restraints come off after twenty-four hours. You will either be fed and given something to drink before you are restrained, or have a bowl of sustenance accessible to you. Wiggling yourself free is quite difficult, but entails no penalty. Other drawback and punishment effects are interrupted until the end of the capture; they may slightly increase in frequency when you’re not captured to compensate.
 				</td>
-				<td colspan="2" class="d do"><span class="t">Animal Love<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child" colspan="2"><span class="a1">Animal Love<img class="u_svg"/><img class="g_svg"/></span>
 					Animals will see you as an attractive sexual partner, and you reciprocate. If you see a handsome/beautiful animal, you'll be aroused, and animals will be able to tell.
 				</td>
-				<td class="d do"><span class="m">Animalist<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child"><span class="a2">Animalist<img class="u_svg"/><img class="g_svg"/></span>
 					Animals will now be compelled to force you into sex
 				</td>
 
 			</tr>
 			<tr>
-				<td class="do u d"><span class="t">Temptation<img class="p_svg"/></span>
+				<td class="parent child"><span class="a1">Temptation<img class="p_svg"/></span>
 					You can now say “I give up”, which will make all restraints come off. This drawback can and must be taken with two punishments, which will all trigger when you give up.
 				</td>
-				<td colspan="2" class="do u d"><span class="m">Usable<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child" colspan="2"><span class="a2">Usable<img class="u_svg"/><img class="g_svg"/></span>
 					You are not guaranteed that nobody will come to you during bondage anymore. Every few hours, someone may come to you and use you in any way they want (so long as they don’t cause permanent damage). They can also try and help you with your restraints, but they will probably fail. There will never be more than one person at a time.
 				</td>
-				<td class="u d do"><span class="m">Toyed</span>
+				<td class="parent child"><span class="a2">Toyed</span>
 					Your bondage now includes stimulating toys that will activate every so often, sometimes for hours. The toys can be controlled by other people.
 				</td>
-				<td class="u d"><span class="m">Tentacle Rape</span>
+				<td class="parent"><span class="a2">Tentacle Rape</span>
 					You will now be abused by tentacles while in bondage. The tentacles can be controlled by other people.
 				</td>
-				<td class="d u"><span class="m">Animal Requirement<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Animal Requirement<img class="u_svg"/><img class="g_svg"/></span>
 					You can now only reach orgasm through sex with an animal.
 				</td>
-				<td colspan="2" class="uo d do dr"><span class="m">Animally Fertile<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent-optional child" colspan="2"><span class="a2">Animally Fertile<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					You are now fertile in intercourse with most animals near your size. If you override this with <strong>pro-choice</strong>, you invoke the punishment.
 				</td>
 			</tr>
 			<tr>
-				<td class="do u d" colspan="2"><span class="h">Soft Torture<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child" colspan="2"><span class="a3">Soft Torture<img class="u_svg"/><img class="g_svg"/></span>
 					The people who come to you are now compelled to make you give up any way they can, so long as they do not cause permanent damage or consequent physical harm. Suppresses <strong>Painless</strong> while the <strong>Bondage Capture</strong> is active.
 				</td>
-				<td class="u d"><span class="h">Crowded<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a3">Crowded<img class="u_svg"/><img class="g_svg"/></span>
 					You are now guaranteed to never be alone while in bondage, and will often found yourself surrounded by a crowd. The more they are, the more their morals values are nullified.
 				</td>
-				<td class="u d"><span class="m">Machinery</span>
+				<td class="parent"><span class="a2">Machinery</span>
 					Your bondage now includes massive fuck machines that will be active about half of the time. Expect exhausting and sometimes even painful hours of penetration from all orifices. The machines can be controlled by other people.
 				</td>
-				<td class="d"><span class="h">Pick-up Artist<img class="g_svg"/><img class="p_svg"/><img class="u_svg"/></span>
+				<td><span class="a3">Pick-up Artist<img class="g_svg"/><img class="p_svg"/><img class="u_svg"/></span>
 					Each time you touch someone, you have a 1/4 chance to feel a special tingle. If you feel it, you must somehow have sex with that person within the next 36 hours. Doesn’t apply to people you’ve already had sex with.
 				</td>
-				<td class="d" rowspan="1"><span class="t">Addictive Semen</span>
+				<td><span class="a1">Addictive Semen</span>
 					Your semen is addictive. Those that are touched by it will not stop looking for you. Don't fuck too many people or you will be pursued by mobs.
 				</td>
-				<td colspan="2" class="u d"><span class="m">Bestiality</span>
+				<td class="parent" colspan="2"><span class="a2">Bestiality</span>
 					All active drawbacks involving other people (marked with a <img class="na g_svg"/>) may now be filled with animals where possible. Can only be taken on rings with at least three drawbacks that involve other people.
 				</td>
 			</tr>
 			<tr>
-				<td rowspan="1" class="d u"><span class="s">Hardcore<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a4">Hardcore<img class="u_svg"/><img class="g_svg"/></span>
 					They can now cause permanent damage and serious harm. Suppresses <strong>Invulnerability</strong> while <strong>Bondage Capture</strong> is active, injuries so inflicted cannot be healed by <strong>Invulnerability</strong> for a week.
 				</td>
-				<td rowspan="1" class="d u"><span class="h">Predicament<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a3">Predicament<img class="u_svg"/><img class="g_svg"/></span>
 					People will now put you through predicament bondage situations. Expect hours of teasing, over-stimulation and overall exhaustion.
 				</td>
-				<td colspan="6" class="do d"><span class="m">Submissive<img class="u_svg"/><img class="p_svg"/></span><img class="g_svg"/>
+				<td class="child" colspan="6"><span class="a2">Submissive<img class="u_svg"/><img class="p_svg"/></span><img class="g_svg"/>
 					You must obey every command you are directly given by the last person to either touch your genitalia, or have their genitalia touched by you (all of them if there was more than one person). This works only for commands directed at you that are sexual in nature, and works also through indirect means (phone, internet) as long as you believe that they can command you. No command can affect you for more than two weeks, so they can’t just fuck you up for life and leave.
 				</td>
 			</tr>
 			<tr>
-				<td rowspan="2" class="do d"><span class="m">Neko-chan<img class="p_svg"/></span>
+				<td class="child" rowspan="2"><span class="a2">Neko-chan<img class="p_svg"/></span>
 					Choose an animal <em>now</em>. You must wear accessories for that animal’s specific features half of all days (sleeping time count as half). For example, for a cat, you would wear cat ears and an anally-plugged cat tail. If your accessories don’t need a plug, you still need to wear one at those times. If taken with <strong>anal plug</strong>, you will only need to wear the tail plug for both drawbacks, but <strong>anal plug</strong> will only reward you with one point.  You may not take this with <strong>Inhuman</strong>.
 				</td>
-				<td class="d"><span class="m">Pleasurer<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td><span class="a2">Pleasurer<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					When you have sex, you must not orgasm until all your partners have.
 				</td>
-				<td rowspan="1" class="u d"><span class="m">To All<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">To All<img class="u_svg"/><img class="g_svg"/></span>
 					This now applies to everyone for sexual commands. Does not apply to everyone for <strong>Generality</strong> and <strong>They Know</strong>. Cannot be taken with <strong>Sanguine Debauchery</strong>.
 				</td>
-				<td rowspan="1" class="u d do" colspan="1"><span class="m">They Know<img class="u_svg"/></span>
+				<td class="parent child"><span class="a2">They Know<img class="u_svg"/></span>
 					Anyone who can give you commands will instinctively know about <strong>Submissive</strong>. If they can’t give you commands anymore, they will remember everything except that you are still subject to <strong>Submissive</strong>.
 				</td>
-				<td colspan="1" class="u d do"><span class="h">Generality<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a3">Generality<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					The commands can now be non-sexual in nature, as long as they don’t involve anything lasting or serious.
 				</td>
-				<td rowspan="1" colspan="2" class="dl u d"><span class="m">Suggestible<img class="u_svg"/></span>
+				<td class="parent child-left" colspan="2"><span class="a2">Suggestible<img class="u_svg"/></span>
 					Your mind tries to interpret messages that you perceive but that are not directed at you (television, people talking, advertising boards) as lewd commands and suggestions that you will be compelled to follow.
 				</td>
-				<td class="u d"><span class="m">In Need<img class="g_svg"/><img class="u_svg"/></span>
+				<td class="parent"><span class="a2">In Need<img class="g_svg"/><img class="u_svg"/></span>
 					About three times a week, you will find yourself extremely compelled to be commanded, to the point where you may ask people who can command you to do so.
 				</td>
 			</tr>
 			<tr>
-				<td class="do d"><span class="m">Crawling<img class="p_svg"/></span>
+				<td class="child"><span class="a2">Crawling<img class="p_svg"/></span>
 					You must move on all fours half of the time you’re moving around.
 				</td>
-				<td class="do d"><span class="t">Bowling<img class="p_svg"/></span>
+				<td class="child"><span class="a1">Bowling<img class="p_svg"/></span>
 					You must eat half of your meals in a bowl using only your mouth.
 				</td>
-				<td colspan="3" rowspan="2" class="do u d"><span class="h">Sanguine debauchery<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child" rowspan="2" colspan="3"><span class="a3">Sanguine debauchery<img class="u_svg"/><img class="g_svg"/></span>
 					Choose a master <em>now</em> (if you have Ring of devotion on any ring, this has to be your owner). That person now identifies themselves as your master. You can disobey your master, but they can subject you to any punishment they want, and have a lot of control over how the drawbacks affect your life; they can even bend the drawback’s rules to their advantage. You serve their interest first, sexual or otherwise; but they care for you and will keep you well so long as you obey them well. You won’t be serving them constantly; when they are busy, your will often have free time. However, you should always be ready for anything your master will tell you to do. The person you choose to be your master must be someone who exists; however, you can describe any person, and the ring will find for your someone who fits as much as possible that description, even adding a few alterations. If you don’t take <strong>Free Market</strong> and your master can no longer take care of you for whatever reason, another will be found with the criterias you have provided. Your master can summon your back to them once a week. <strong>Submissive</strong> now only applies to your master. For all drawbacks involving other people (<img class="na g_svg"/>), your master can choose who is involved; this can include them, but must include other people for drawbacks that involve multiple people simultaneously.
 				</td>
-				<td colspan="2" rowspan="1" class="d"><span class="m">Exhibitionism<img class="u_svg"/><img class="p_svg"/></span>
+				<td colspan="2"><span class="a2">Exhibitionism<img class="u_svg"/><img class="p_svg"/></span>
 					Every week, you must spend half the total amount of time you are in public naked. Collars/gags/belts/etc. can still be worn. You cannot get in legal trouble for this, but people will still react like they normally would; sometimes by taking advantage of you.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3" class="u dr d"><span class="m">Fully Animal<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent child-right" colspan="3"><span class="a2">Fully Animal<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					You must now act both like a typical animal as chosen in <strong>Neko-chan</strong> when communicating with people or behaving in public. This modification of your lifestyle apart, you can still do what you normally would. Also, you cannot (humanly) speak unless you’re asked something.  If you have <strong>Inhuman</strong> you may take this without <strong>Neko-Chan</strong>.
 				</td>
-				<td colspan="2" class="d do"><span class="m">Air Inflation</span>
+				<td class="child" colspan="2"><span class="a2">Air Inflation</span>
 					One day per week, randomly, you will inflate.  Your effective weight is reduced to about 1/10 of normal and your limbs become difficult to move.  Expect to bounce a lot.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="d"><span class="m">Repulsed</span>
+				<td colspan="2"><span class="a2">Repulsed</span>
 					All active drawbacks involving other people (marked with a <img class="na g_svg"/>) will now only involve people who you find physically repulsive. This criteria may loosen over time if the resulting amount of people is too small. Can only be taken on rings with at least three drawbacks that involve other people.
-
-					<td class="u d" colspan="2"><span class="h">Pet<img class="u_svg"/><img class="g_svg"/></span>
-						You must act like a pet kind of the animal as chosen is <strong>Neko-chan</strong>. Your master is that of <strong>Sanguine Debauchery</strong>, and will help your train into a proper pet. They have full authority to make you act like they want, as long as you remain of the kind of animal you have chosen and you are taken care of by your master. This goes for all your owners and users if you have taken <strong>Free Market</strong> or <strong>Communism</strong>.
-					</td>
-					<td class="do u d" colspan="2"><span class="m">Free Market<img class="u_svg"/><img class="g_svg"/></span>
-						You may now be sold, rented or even stolen by other masters, so long as you remain enslaved. Some may be stricter than others. If you find yourself without a master, you will be put to auction. You are no longer considered anything other than a sexual object; property. Even a slut is still a person.
-					</td>
-					<td colspan="2" class="do u d"><span class="m">Sexual Pressure</span>
-						You slowly inflate when aroused.  It takes about an hour to reach the same level as <strong>Air Inflation</strong>, and an hour to return to normal.
-					</td>
+				</td>
+				<td class="parent" colspan="2"><span class="a3">Pet<img class="u_svg"/><img class="g_svg"/></span>
+					You must act like a pet kind of the animal as chosen is <strong>Neko-chan</strong>. Your master is that of <strong>Sanguine Debauchery</strong>, and will help your train into a proper pet. They have full authority to make you act like they want, as long as you remain of the kind of animal you have chosen and you are taken care of by your master. This goes for all your owners and users if you have taken <strong>Free Market</strong> or <strong>Communism</strong>.
+				</td>
+				<td class="parent child" colspan="2"><span class="a2">Free Market<img class="u_svg"/><img class="g_svg"/></span>
+					You may now be sold, rented or even stolen by other masters, so long as you remain enslaved. Some may be stricter than others. If you find yourself without a master, you will be put to auction. You are no longer considered anything other than a sexual object; property. Even a slut is still a person.
+				</td>
+				<td class="parent child" colspan="2"><span class="a2">Sexual Pressure</span>
+					You slowly inflate when aroused.  It takes about an hour to reach the same level as <strong>Air Inflation</strong>, and an hour to return to normal.
+				</td>
 			</tr>
 			<tr>
-				</td><td colspan="1" class="do d"><span class="m">Blindfold<img class="p_svg"/></span>
+				<td class="child"><span class="a2">Blindfold<img class="p_svg"/></span>
 					You must wear an opaque blindfold continiously for 6 hours a day.  Only hours awake count.
 				</td>
-				<td class="do d"><span class="m">Anal Plug<img class="p_svg"/></span>
+				<td class="child"><span class="a2">Anal Plug<img class="p_svg"/></span>
 					You will obtain a magical anal plug that you must wear 48 hours every week. You must always wear it while in public. Sleeping hours only count as half-hours.
 				</td>
-				<td class="do d"><span class="m">Bondage<img class="p_svg"/></span>
+				<td class="child"><span class="a2">Bondage<img class="p_svg"/></span>
 					You must be in some kind of rope bondage or fetish harness for 48 hours every week. Sleeping hours only count as half-hours.
 				</td>
-				<td rowspan="1" colspan="1" class="d"><span class="m">Faithful<img class="u_svg"/><img class="p_svg"/></span>
+				<td><span class="a2">Faithful<img class="u_svg"/><img class="p_svg"/></span>
 					You must never cheat while in a relationship. If you marry someone, you must never cheat with anyone else until your significant other dies. Marriages previous to this ring’s creation don’t count. It doesn’t count if you’re raped, or if your partner knows and doesn’t mind.
 				</td>
-				<td class="u d"><span class="m">Communism<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Communism<img class="u_svg"/><img class="g_svg"/></span>
 					You will frequently (about a week every month) serve as public slave, for use by everyone. You may be held in a public place for use by passersby, or in a special relief room at events.
 				</td>
-				<td colspan="2" class="u d"><span class="t">Central Banker<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent" colspan="2"><span class="a1">Central Banker<img class="u_svg"/><img class="g_svg"/></span>
 					Your master now controls your rate of inflation or deflation from <strong>Sexual Pressure</strong>.
 				</td>
-				<td class="do u d" colspan="1"><span class="m">Pool Toy</span>
+				<td class="parent child"><span class="a2">Pool Toy</span>
 					When inflated, you now lose all control of your limbs.  Your weight drops such that you now comfortably float on water.  Your skin takes on a rubbery feel.
 				</td>
 			</tr>
 			<tr>
-					</td><td colspan="1" class="u d"><span class="h">Blind</span>
-						You are blind.  This replaces the effect of <strong>Blindfold</strong>.  Overrides </strong>Heightened Senses</strong>.
-					</td>
-					<td colspan="2" class="dr u d"><span class="m">Busy Schedule<img class="u_svg"/><img class="p_svg"/></span>
-						You must wear a full-body bondage set or harness half of all time, and half of all the time you are in public. Those can overlap. You must also wear your anal plug at those times.
-					</td>
-					<td colspan="4" class="do d"><span class="t">Stimulation Device<img class="p_svg"/></span>
-						You get a magical clit vibrator/penis ring that you must wear at all times except three hours per day. It has two levels of activation: a first which will only tease and stimulate you, and a second which will get you off and keep forcing you to orgasm. By default, it never activates. You cannot masturbate while wearing the device. The vibrator will disappear when a penis enters the vagina and reappear five minutes after the penis leaves.
-					</td>
-					<td rowspan="2" class="u d"><span class="m">Balloon</span>
-						When inflated, you now become lighter than air and start to float off.  If you end up more than 100 meters above the ground, you will leak some air and start to drift down.  If you have <strong>Central Banker</strong> they still cannot make you go above this height.
-					</td>
+				<td class="parent"><span class="a3">Blind</span>
+					You are blind.  This replaces the effect of <strong>Blindfold</strong>.  Overrides </strong>Heightened Senses</strong>.
+				</td>
+				<td class="parent child-right" colspan="2"><span class="a2">Busy Schedule<img class="u_svg"/><img class="p_svg"/></span>
+					You must wear a full-body bondage set or harness half of all time, and half of all the time you are in public. Those can overlap. You must also wear your anal plug at those times.
+				</td>
+				<td class="child" colspan="4"><span class="a1">Stimulation Device<img class="p_svg"/></span>
+					You get a magical clit vibrator/penis ring that you must wear at all times except three hours per day. It has two levels of activation: a first which will only tease and stimulate you, and a second which will get you off and keep forcing you to orgasm. By default, it never activates. You cannot masturbate while wearing the device. The vibrator will disappear when a penis enters the vagina and reappear five minutes after the penis leaves.
+				</td>
+				<td class="parent" rowspan="2"><span class="a2">Balloon</span>
+					When inflated, you now become lighter than air and start to float off.  If you end up more than 100 meters above the ground, you will leak some air and start to drift down.  If you have <strong>Central Banker</strong> they still cannot make you go above this height.
+				</td>
 			</tr>
 			<tr>
-				</td><td colspan="1" class="do d"><span class="m">Earmuffs<img class="p_svg"/></span>
+				<td class="child"><span class="a2">Earmuffs<img class="p_svg"/></span>
 					You must wear a noise-canceling continuously for 6 hours a day.  Only hours awake count.
 				</td>
-				<td class="do d"><span class="m">Gagged<img class="p_svg"/></span>
+				<td class="child"><span class="a2">Gagged<img class="p_svg"/></span>
 					You must wear a some kind of gag for a total of 48 hours every week. Sleeping hours only count as half-hours.
 				</td>
-				<td class="do u d" colspan="2"><span class="m">Walking stimulation</span>
+				<td class="parent child" colspan="2"><span class="a2">Walking stimulation</span>
 					Your stimulation device will now connect to your bondage when you’re wearing it. Walking around a while wearing bondage has a 1/2 chance to make your stimulation go up one level; being in public only increases that chance. Turns off when you sit down or stop moving. You anal plug will also stimulate you.
 				</td>
-				<td class="do u d"><span class="t">Distraction</span>
+				<td class="parent child"><span class="a1">Distraction</span>
 					Your stimulating device will activate by one level in short bursts (five minutes) every now and then. Expect to be distracted and made horny about ten times a week.
 				</td>
-				<td class="u d" colspan="2"><span class="m">Peer Stimulation<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent" colspan="2"><span class="a2">Peer Stimulation<img class="u_svg"/><img class="g_svg"/></span>
 					A third of the time you wear your device in public, one random person who can see you (you don’t know who) will temporarily gain a remote to control your devices. They will compelled to torment you, but it’s up to them whether they do it through endless teasing or continuous forced orgasm.
 				</td>
 			</tr>
 			<tr>
-				</td><td colspan="1" class="u d"><span class="h">Deaf</span>
+				<td class="parent"><span class="a3">Deaf</span>
 					You are Deaf.  This replaces the effect of <strong>Earmuffs</strong>.  Overrides </strong>Heightened Senses</strong>.
 				</td>
-				<td class="dr u d" colspan="2"><span class="h">Fully Equipped<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent child-right" colspan="2"><span class="a3">Fully Equipped<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					You are now a fully-equipped bondage slut. You must spend at least 12 hours a week in public wearing nothing but your bondage set, your gag, your plug and your stimulation device. During this time, half of all people you meet will be compelled to take you somewhere to use you; the other half will react normally. The durations specified in other drawbacks still apply, but can overlap with this. Your gag is now always a ring or spider gag.
 				</td>
-				<td rowspan="2" class="do u d"><span class="h">Helpless<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child" rowspan="2"><span class="a3">Helpless<img class="u_svg"/><img class="g_svg"/></span>
 					At random times (about three times per month), an armbinder, yoke, or ether hand-restraining device will equip itself on your arms. Your device will also lock itself on either level one or level two (chosen randomly each time) until the device is taken off. Only someone you don’t know can take the device off. Also, items of clothing will randomly come off you until, after 24 hours, you wear nothing but bondage. You are automatically freed if you can’t find help for 12 more hours.
 				</td>
-				<td rowspan="2" class="do u d"><span class="m">Random Stimulation</span>
+				<td class="parent child" rowspan="2"><span class="a2">Random Stimulation</span>
 					<strong>Distraction</strong> now activates once or twice a day for a half hour at a time.
 				</td>
-				<td colspan="3" class="dl d"><span class="m">Nightmares</span>
+				<td class="child-left" colspan="3"><span class="a2">Nightmares</span>
 					When sleeping, you have a 1/4 chance of experiencing a short, warped but vivid nightmare of random but always creepy or disgusting and reoccuring individuals or creatures raping you, just before you wake up. Cannot take with <strong>Never Sleep</strong>.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="do d"><span class="m">Humiliation<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="child" colspan="2"><span class="a2">Humiliation<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					About twice a day, you must do random humiliating act that people will tell you to do. The less people get to see it and the less often you are asked to do such things, the more humiliating the acts will be.
 				</td>
-				<td class="do u d"><span class="h">More Used<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a3">More Used<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					The duration of <strong>Fully Equipped</strong> is now extended to 36 hours a week.
 				</td>
-
-				<td class="d u"><span class="m">Always</span>
+				<td class="parent"><span class="a2">Always</span>
 					You now get the nightmares every night.
 				</td>
-				<td class="d do u"><span class="m">They Come</span>
+				<td class="parent child"><span class="a2">They Come</span>
 					They will come in real life, sometimes (every couple of weeks). Expect hours of gangrape. If they’re pleased, they might stop <strong>Nightmares</strong> for the week; but it’s gonna take some work.
 				</td>
-				<td class="do d"><span title="1796147" class="m">Must Blow<img class="p_svg"/></span>
+				<td class="child"><span title="1796147" class="a2">Must Blow<img class="p_svg"/></span>
 					You must try sucking all objects very close to you that you recognize as phallic (in shape as well as in size) the first time you see them each day, including penises (but not your own).
 				</td>
 			</tr>
 			<tr>
-				</td><td colspan="1" class="d do u"><span class="m">Bullies<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a2">Bullies<img class="u_svg"/><img class="g_svg"/></span>
 					10% of people now enjoy bullying you. They crave to humiliate and hurt you and are mean and petty. They act like schoolyard bullies and won't go too far and will not cause serious injury.  No one else will be interested in stopping or interrupting their abuse.
 				</td>
-				<td colspan="4" class="u d"><span class="h">Public Slave<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent" colspan="4"><span class="a3">Public Slave<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					You are now a public slave. You must wear your stimulating device, plug, bondage set and ring gag at all times except on week-ends. Half of all people will be compelled to use you any way they want, the other half will react as they normally would. Ignore the effects of all drawbacks above linked to this one. Everyone can now control your stimulating device and your plug’s stimulation. People will provide you with food and home, but expect humiliating and uncomfortable situations. You are completely free on week-ends, though.
 				</td>
-				<td class="d"><span class="h">Yamete Kudasai<img class="u_svg"/><img class="g_svg"/></span>
+				<td><span class="a3">Yamete Kudasai<img class="u_svg"/><img class="g_svg"/></span>
 					You can only feel pleasure from sexual intercourse if your “partner(s)” believe you don’t consent to it.
 				</td>
-				<td class="d u"><span class="h">They’re here</span>
+				<td class="parent"><span class="a3">They’re here</span>
 					They now have a 1/3 chance to come every evening. It’s gonna take even more work to keep them entertained. They never come two evenings in a row.
 				</td>
-				<td class="d u"><span class="h" title="1796147">Must Like It<img class="p_svg"/></span>
+				<td class="parent"><span class="a3" title="1796147">Must Like It<img class="p_svg"/></span>
 					You must masturbate while you’re sucking for at least 30 seconds each time, focusing only on your sucking. You must go until you orgasm for at least one of those times every day.
 				</td>
 			</tr>
 			<tr>
-				<td class="u d"><span class="m">Authority<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Authority<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					Bullies can now give orders or demands that you must obey.  This functions like <strong>Generality</strong> but may involve more humiliation, theft, and non-sexual submission.  This may come with a specific threat that can replace or change your chosen punishment.
 				</td>
-				</td><td colspan="1" class="d"><span class="m">Hyper Tongue</span>
+				<td><span class="a2">Hyper Tongue</span>
 					Your tongue becomes extremely large, twice the width and thickness, and gains 20 centimeters in length.  It is difficult to keep in your mouth and leads to a lot of drooling.
 				</td>
-				<td class="u d"><span class="m">No Interruption<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="parent"><span class="a2">No Interruption<img class="u_svg"/><img class="p_svg"/></span>
 					You aren’t free on weekends anymore.
 				</td>
-
-				<td colspan="4" class="d do"><span class="m">Cross-dressing<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="child" colspan="4"><span class="a2">Cross-dressing<img class="u_svg"/><img class="p_svg"/></span>
 					You must almost always dress as a typical member of the gender to which, <em>right now</em>, identifying yourself to makes you the most uncomfortable.
 				</td>
-				<td class="do d"><span class="m">Truthful<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="child"><span class="a2">Truthful<img class="u_svg"/><img class="p_svg"/></span>
 					You mustn’t say or write as if it was true anything that you’re not pretty sure to be true. You are allowed one exception per week.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3" class="d"><span class="m">Forced Orgasm</span>
+				<td colspan="3"><span class="a2">Forced Orgasm</span>
 					When you orgasm while having sex or masturbating, you will find yourself forced to keep going afterwards for a random amount of time between nothing and half an hour. During this, you will stay hard/wet but will still suffer from post-orgasm oversensitivity, and become temporarily able to orgasm any number of times until the effect ends. During sex, your partner’s orgasm or wish to end the sex is effectively delayed for as long as this drawback keeps you going.
 				</td>
-				<td colspan="2" class="do d u"><span class="m">Act Like It<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="parent child" colspan="2"><span class="a2">Act Like It<img class="u_svg"/><img class="p_svg"/></span>
 					You must now act in public like a typical member of that gender in society.
 				</td>
-				<td class="u d"><span class="m">All the way<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="parent"><span class="a2">All the way<img class="u_svg"/><img class="p_svg"/></span>
 					You must now dress as a very stereotypical member of that gender.
 				</td>
-				<td class="do u d"><span class="m">Make-up/Hairy<img class="p_svg"/><img class="u_svg"/></span>
+				<td class="parent child"><span class="a2">Make-up/Hairy<img class="p_svg"/><img class="u_svg"/></span>
 					For female cross-dressing: you must now wear what would be considered standard amounts of make-up for a woman almost every time you are in public. For male cross-dressing: you must shave very little.
 				</td>
-				<td class="do u d"><span class="m">Verbose<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="parent child"><span class="a2">Verbose<img class="u_svg"/><img class="p_svg"/></span>
 					You must mention out loud every time you feel horny, or think of sexual fantasies, even if nobody is around.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="1" class="d"><span class="h">Masochism</span>
+				<td><span class="a3">Masochism</span>
 					What would normally cause pain is now the only way you can feel physical pleasure. Cannot be taken together with <strong>Painless</strong>.
 				</td>
-				<td class="d u"><span class="m">Egoism<img class="u_svg"/></span>
+				<td class="parent"><span class="a2">Egoism<img class="u_svg"/></span>
 					Your partner’s orgasm or wish to end the sex is no longer delayed. You will sometimes find yourself raping your partner after sex.
 				</td>
-				<td rowspan="1" class="d"><span class="t">Milking</span>
+				<td><span class="a1">Milking</span>
 					At random times, goddess’ servants will appear to take you to a device where you will be milked of all sexual fluids and, if applicable, milk. This happens about twice per week, and lasts until you are sucked dry.
 				</td>
-				<td class="d u"><span class="m">Physical Change</span>
+				<td class="parent"><span class="a2">Physical Change</span>
 					You become an equivalent of yourself but in the gender in question. Overrides <strong>Swapped Gender</strong>. You don’t get used to it.
 				</td>
-				<td colspan="1" class="d u"><span class="m">Exaggerated<img class="p_svg"/><img class="u_svg"/></span>
+				<td class="parent"><span class="a2">Exaggerated<img class="p_svg"/><img class="u_svg"/></span>
 					You must now act like a very stereotypical person of that gender.
 				</td>
-				<td class="d"><span class="h">Baby Life<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td><span class="a3">Baby Life<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					You will be given to people who want to have a baby, and must act like a baby. They will take care of you as such.  If you take <strong>Full-Time</strong>, you are off this requirement every other weekend.
 				</td>
-				<td class="d u"><span class="m">Doll-like/Unshaved<img class="p_svg"/><img class="u_svg"/></span>
+				<td class="parent"><span class="a2">Doll-like/Unshaved<img class="p_svg"/><img class="u_svg"/></span>
 					For female cross-dressing: in public, you must now almost always wear very heavy amounts of make-up. For male cross-dressing: you mustn’t shave at all.
 				</td>
-				<td class="u d"><span class="h">Liar<img class="u_svg"/></span>
+				<td class="parent"><span class="a3">Liar<img class="u_svg"/></span>
 					In public, you will find yourself spontaneously saying that you are horny, that you want to be raped and similar things. This will happen around four times a day, and is ignored by <strong>Truthful</strong>.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="do d"><span class="m">Group Sex<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="child" colspan="2"><span class="a2">Group Sex<img class="u_svg"/><img class="p_svg"/></span>
 					Half of all sexual intercourse you have every week must be with at least two other people. They must be fully involved, and may be of any gender. It doesn’t count if you’re raped.
 				</td>
-				<td colspan="3" class="do d"><span class="m">Voyeurism<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="child" colspan="3"><span class="a2">Voyeurism<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					Choose <em>now</em> between masturbation and sex. Half all instances of the kind that you have chosen must now be watched by someone you don’t know. It doesn’t count if you’re raped.
 				</td>
-				<td colspan="3" class="dl d"><span class="t">Dirty Talk<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child-left" colspan="3"><span class="a1">Dirty Talk<img class="u_svg"/><img class="g_svg"/></span>
 					People will now, without paying much attention to it, casually call you by dirty names, such as “slut”, "bitch", "whore", etc.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="d u"><span class="t">Bad Group<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="parent" colspan="2"><span class="a1">Bad Group<img class="u_svg"/><img class="p_svg"/></span>
 					Half of all sexual intercourse you have every week must be with at least two other people, with at least as much people of the gender to which you are the least attracted than people of the gender to which you are the most attracted. It doesn’t count if you’re raped.
 				</td>
-				<td class="d u"><span class="m">Public Sex<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Public Sex<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					Instead of being watched by someone, these instances must now be done in public, with people around.
 				</td>
-				<td class="d u"><span class="m">Watches all<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="parent"><span class="a2">Watches all<img class="u_svg"/><img class="p_svg"/></span>
 					The watching now applies to half of both masturbation and sex, separately. Also applies to <strong>Public Sex</strong> if it has been taken.
 				</td>
-				<td class="d u"><span class="m">Going Viral<img class="u_svg"/></span>
+				<td class="parent"><span class="a2">Going Viral<img class="u_svg"/></span>
 					Some of your watchers will be compelled to take and share pictures, stories and other records of your acts.
 				</td>
-				<td class="do d u"><span class="m">Affecting Names<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a2">Affecting Names<img class="u_svg"/><img class="g_svg"/></span>
 					Even though they think they’re joking, calling you by those names will slowly affect how people perceive you unless you deny it every time.
 				</td>
-				<td class="do d u"><span class="t">Harassment<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a1">Harassment<img class="u_svg"/><img class="g_svg"/></span>
 					People around you will now have a 1/2 chance to be compelled to physically sexually harass you every encounter.
 				</td>
-				<td class="do d" colspan="1"><span class="m">Personal Space<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child"><span class="a2">Personal Space<img class="u_svg"/><img class="g_svg"/></span>
 					In public settings, everyone will violate your personal bubble. This will bump into you, hold handshakes too long, stand close enough you feel their breath, rub your thighs while conversing, and drape their arms over you when sitting down, etc.
 				</td>
 			</tr>
 			<tr>
-				<td rowspan="1" class="d"><span class="t">Nyotaimori<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td><span class="a1">Nyotaimori<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					You will randomly be required to serve as a naked support for food. You must remain obedient for whatever sexual harassment you are subjected to during the meal. This will happen about once a week.
 				</td>
-				<td rowspan="1" class="do d"><span class="m">Lewd Aura<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child"><span class="a2">Lewd Aura<img class="u_svg"/><img class="g_svg"/></span>
 					All people within eight meters of you have a 1/2 chance to rapidly become strongly aroused.
 				</td>
-				<td class="do d"><span class="t">Lust Trigger<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child"><span class="a1">Lust Trigger<img class="u_svg"/><img class="g_svg"/></span>
 					A certain uncommon word will make you particularly horny. Doesn’t work when you say the word.
 				</td>
-				<td class="d do"><span class="t">Unfaithfulness<img class="u_svg"/></span>
+				<td class="child"><span class="a1">Unfaithfulness<img class="u_svg"/></span>
 					Any partner you have will be unnaturally compelled to flirt, hang on and even kiss other people than you. This drawback will not itself lead to sex, but sex may occur if the partner would have cheated without this drawback. They are aware of it afterwards, but cannot help themselves.
 				</td>
-				<td class="do d"><span class="h">Receiver’s Position</span>
+				<td class="child"><span class="a3">Receiver’s Position</span>
 					You can only feel sexual pleasure through receiving anal or oral penetration. They will give you enough pleasure to get off. Unless you take <strong>Not By Myself</strong>, you can still masturbate and get off, but only through anal play and sucking phallic objects.
 				</td>
-				<td rowspan="2" class="u d do"><span class="m">Slutty<img class="u_svg"/></span>
+				<td class="parent child" rowspan="2"><span class="a2">Slutty<img class="u_svg"/></span>
 					Wherever you go, after staying there a week, everyone district-wide will think that you are a slut, no matter whether it’s true or not. You can pre-emptively and afterwards convince individual people that you’re not a slut, but this will slowly reset if they don’t see you for a while.
 				</td>
-				<td colspan="2" class="do d u"><span class="m">Strangely Intimate Strangers<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child" colspan="2"><span class="a2">Strangely Intimate Strangers<img class="u_svg"/><img class="g_svg"/></span>
 					People in your personal space will not simply touch or harass you, they will also molest you, includes kissing and sandwich hugs with groups. If they become aroused, they may publicly masturbate onto your sexual regions such as crotch or breasts.
 				</td>
 			</tr>
 			<tr>
-				<td class="d"><span class="m">Cumtastic</span>
+				<td><span class="a2">Cumtastic</span>
 					Every sip of drink you take has a random 1/4 chance of changing to semen the moment it enters your mouth. Drinking continually once your sip isn’t cum only makes it more likely for the next one to be cum.
 				</td>
-				<td class="d u"><span class="h">Large Aura<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a3">Large Aura<img class="u_svg"/><img class="g_svg"/></span>
 					The aura now has a radius of three hundred meters. This does not penetrate walls, and does not affect anyone traveling away from you.
 				</td>
-				<td class="d u"><span class="t">Cum Trigger<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a1">Cum Trigger<img class="u_svg"/><img class="g_svg"/></span>
 					Another uncommon word now makes you orgasm strongly and uncontrollably. Doesn’t work when you say the word.
 				</td>
-				<td class="d u"><span class="m">Cheating<img class="u_svg"/></span>
+				<td class="parent"><span class="a2">Cheating<img class="u_svg"/></span>
 					Any partner you have will now be compelled to cheat on you. They are aware of it afterwards, but cannot help themselves.
 				</td>
-				<td class="d u"><span class="m">Choose Wisely</span>
+				<td class="parent"><span class="a2">Choose Wisely</span>
 					Choose <em>now</em> either anal and oral penetration. The one you choose is now the only way you can feel sexual pleasure. The oral penetration must be sexual in nature.
 				</td>
-				<td colspan="2" class="u d do"><span class="m">Proof<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child" colspan="2"><span class="a2">Proof<img class="u_svg"/><img class="g_svg"/></span>
 					If they are aroused instead of masturbating themselves, they masturbate you to the brink of an orgasm and prevent any of your further attempts at masturbation, edging you until you admit you're a slut. This may happen twice a day, and every attempt lasts an hour.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" class="d"><span class="t">Common<img class="u_svg"/></span>
+				<td colspan="4"><span class="a1">Common<img class="u_svg"/></span>
 					You aren't unique. Every district will have roughly 10 people with the same Powers, Drawbacks, sexuality, very similar choices, and even mentality as you. All of your Powers and Drawbacks are common knowledge and may be abused, or feared.
 				</td>
-				<td class="d" colspan="1"><span class="t">Anal-Maniac</span>
+				<td><span class="a1">Anal-Maniac</span>
 					During sex using your genitals, you also require anal stimulation or to be spanked to orgasm.
 				</td>
-				<td colspan="3" class="d u"><span class="t">Asking For It<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="parent" colspan="3"><span class="a1">Asking For It<img class="u_svg"/><img class="p_svg"/></span>
 					Stating you are a slut at any time gives <strong>anyone</strong> within earshot the consent to fuck you one hour. They instinctively acquire this knowledge for the hour, and you musn't resist if they act upon it. This will not be considered rape, and will trigger punishments such as <strong>Unnatracted</strong> or <strong>Faithful</strong>.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="1" rowspan="2" class="do d"><span class="h">Unattracted<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="child" rowspan="2"><span class="a3">Unattracted<img class="u_svg"/><img class="p_svg"/></span>
 					You must now only flirt, date, have relationships and intercourse with the gender to which you are the least attracted. You must only watch pornography involving only that gender. Finally, drawbacks <em>for all rings</em> involving other people (marked with a <img class="na g_svg"/>) will now only involve people of that gender. You get one exception every twelve interactions with that gender. Cannot take with <strong>Attracted</strong>.
 				</td>
-				<td colspan="6" class="do d"><span class="m">Incontinence</span>
+				<td class="child" colspan="6"><span class="a2">Incontinence</span>
 					When you're awake, and you need to pee, you really need to pee. You will often not be able to hold it for more than a minute.
 				</td>
-				<td rowspan="2" class="d do"><span class="m">Alt. Sustenance<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child" rowspan="2"><span class="a2">Alt. Sustenance<img class="u_svg"/><img class="g_svg"/></span>
 					Instead of food and water, your sustenance is now having orgasms while having sex with other people. You need about two times a day, from two different people. It only counts if at least one person orgasms. Cannot take with <strong>No Sustenance</strong>.
 				</td>
 			</tr>
 			<tr>
-				<td  class="u d"><span class="m">Marking<img class="u_svg"/><img class="g_svg"/></span>
+				<td  class="parent"><span class="a2">Marking<img class="u_svg"/><img class="g_svg"/></span>
 					You will be compelled to piss on any nearby persons while peeing. They may punish you for it.
 				</td>
-				<td  class="u d"><span class="m">Bed-wetter<img class="u_svg"/></span>
+				<td  class="parent"><span class="a2">Bed-wetter<img class="u_svg"/></span>
 					Also applies when you're asleep. You'll wet the bed every night. This does not impress bed companions. If you have <strong>Guardian</strong>, they will scold you for it.
 				</td>
-				<td  class="u d do"><span class="m">Public<img class="u_svg"/></span>
+				<td  class="parent child"><span class="a2">Public<img class="u_svg"/></span>
 					You can't sense that you need to pee. The more people, and the less appropriate occasion you're in, the more likely it is that you'll wet yourself.
 				</td>
-				<td  class="u d do"><span class="m">Diapers<img class="p_svg"/></span>
+				<td  class="parent child"><span class="a2">Diapers<img class="p_svg"/></span>
 					You must to wear a diaper at all times.
 				</td>
-				<td  class="u d"><span class="m">No Hindrance<img class="u_svg"/></span>
+				<td  class="parent"><span class="a2">No Hindrance<img class="u_svg"/></span>
 					You can't wear anything that would hinder the urine from coming out- no plugs, diapers, pads.  Cannot be taken with <strong>Diapers</strong>.
 				</td>
-				<td class="u d"><span class="t">Frequent Urination</span>
+				<td class="parent"><span class="a1">Frequent Urination</span>
 					You need to pee much more often.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="1" class="u d"><span class="m">No Exceptions</span>
+				<td class="parent"><span class="a2">No Exceptions</span>
 					You don't get any exceptions, and only those least like your preferred gender are acceptable.
 				</td>
-				<td colspan="2" class="d"><span class="m">Not by myself<img class="u_svg"/><img class="p_svg"/></span>
+				<td colspan="2"><span class="a2">Not by myself<img class="u_svg"/><img class="p_svg"/></span>
 					You mustn’t masturbate or use toys on yourself. Other people can still masturbate you and use toys on you. Cannot be taken with a drawback that requires or forces you to masturbate or orgasm, or a drawback that mentions you watching porn.
 				</td>
-				<td colspan="1" class="u d"><span class="m">Unnoticed<img class="u_svg"/></span>
+				<td class="parent"><span class="a2">Unnoticed<img class="u_svg"/></span>
 					When you wet yourself, you don't notice it until you see it in a mirror, or until someone points it out to you.
 				</td>
-				<td colspan="1" class="u d"><span class="m">No Change<img class="p_svg"/></span>
+				<td class="parent"><span class="a2">No Change<img class="p_svg"/></span>
 					You can't change your own diapers. You must ask someone else.
 				</td>
-				<td class="d"><span class="m">Urethra Play</span>
+				<td><span class="a2">Urethra Play</span>
 					Your urethra must be plugged for a total of 24 hours every week. Sleeping time counts as half.
 				</td>
-				<td colspan="1" class="do d"><span class="m">Only With Permission<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="child"><span class="a2">Only With Permission<img class="u_svg"/><img class="p_svg"/></span>
 					You can't pee without permission. Someone must have given you permission in the last 15 minutes. Cannot take with <strong>Incontinence</strong>.
 				</td>
-				<td rowspan="1" class="d u"><span class="h">Altruist<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a3">Altruist<img class="u_svg"/><img class="g_svg"/></span>
 					Instead of orgasms, your sustenance is now the sexual fluids of other people. You need about three intercourse’s worth per day. Must be three different people.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="5" class="dr do d"><span class="m">Lactation</span>
+				<td class="child" colspan="5"><span class="a2">Lactation</span>
 					Your breasts produce milk, as if you'd just had a baby. Your breasts become uncomfortable if not milked every few days or so.
 				</td>
-				<td rowspan="2" class="d"><span class="m">Abnormal Breasts</span>
+				<td rowspan="2"><span class="a2">Abnormal Breasts</span>
 					You grow more than the human number of breasts and/or your breasts take on an usual structure, such as crotchtits or an udder.  Choose the form <em>now</em>.
 				</td>
-				<td colspan="1" class="u d"><span class="m">Customary</span>
+				<td class="parent"><span class="a2">Customary</span>
 					You can't pee except into someone else's mouth.
 				</td>
-				<td rowspan="2" class="d"><span class="t">Concrete Prison</span>
+				<td rowspan="2"><span class="a1">Concrete Prison</span>
 					You are completely unable to escape <em>Society</em> in any form. If you somehow find yourself outside of it, you will be teleported to the nearest Civilization, or even another similar <em>world</em>. Attempting to travel to different towns will cause a memory lapse until you reach that destination.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="1" class="dr do u d"><span class="m">Cowgirl</span>
+				<td class="parent child"><span class="a2">Cowgirl</span>
 					Your breasts produce milk at cow-like rates. You need to be milked at least every few hours, but less during the night. You always need to be milked first thing in the morning.
 				</td>
-				<td colspan="2" class="dr do u d"><span class="m">Milkmaid</span>
+				<td class="parent child" colspan="2"><span class="a2">Milkmaid</span>
 					You can't express your milk with your own hands.
 				</td>
-				<td colspan="1" class="u d"><span class="m">Orgasmic Milking</span>
+				<td class="parent"><span class="a2">Orgasmic Milking</span>
 					Being milked gives you little orgasms every so often. If you come another way, your milk output goes up by one step for an hour(Lactation->Cowgirl->Cow), if you have <strong>Cow</strong> already, milk volume is instead doubled.
 				</td>
-				<td colspan="1" class="u d"><span class="t">Expanded Capacity</span>
+				<td class="parent"><span class="a1">Expanded Capacity</span>
 					You can go twice as long without being milked, but your breasts grow in size as they fill (double the normal volume).  They reach triple your normal size at the maximum.  If that limit is reached, you spray milk until they fully deflate.
 				</td>
-				<td colspan="1" class="d"><span class="m">Shower</span>
+				<td><span class="a2">Shower</span>
 					Your sustenance is other people's urine. It loses its potency if it is stored in a container for more than a minute.  Cannot take with <strong>No Sustenance</strong> or <strong>Alt. Sustenance</strong>.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="1" class="u d"><span class="m">Cow</span>
+				<td class="parent"><span class="a2">Cow</span>
 					Your breasts produce milk at very high rates. You need to be milked in your sleep, as well as at least every half hour. Otherwise, milk begins leaking from your nipples, in a steady trickle.
 				</td>
-				<td colspan="1" class="u d"><span class="t">Automatic</span>
+				<td class="parent"><span class="a1">Automatic</span>
 					Your milking is done by a large, bulky machine. Depending on how often you need to be milked, you may be tethered to the machine most of the day.
 				</td>
-				<td colspan="1" class="u d"><span class="m">Public Utility<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Public Utility<img class="u_svg"/><img class="g_svg"/></span>
 					Random people will come up to you and begin sucking on your nipples, and drinking your milk. They will know at what rate to arrive. You do not need to be milked any more than that.  Cannot take with <strong>Automatic</strong>.
 				</td>
-				<td colspan="4" class="dr do d"><span class="t">Guardian<img class="g_svg"/></span>
+				<td class="child" colspan="4"><span class="a1">Guardian<img class="g_svg"/></span>
 					You always have a Guardian, this may be two if you choose <em>now</em>. They age normally, and may change over time as they become too old to see to your needs, or powers and drawbacks force them to switch. Your Guardian is not affected by or in the larger pool of people for other drawbacks (marked with a <img class="na g_svg"/>) They see it as their goal to make sure that you behave properly, whatever that means to them. But if you have specific needs, your Guardian will take care of them. <em>Upon activation</em>, a Guardian will find you in the next hour.<em>Upon deactivation</em> Your Guardians will continue to behave the same way towards you until you leave their presence, after which they will forget about you.
 				</td>
-				<td rowspan="2" class="d"><span class="m">Fuckface</span>
+				<td rowspan="2"><span class="a2">Fuckface</span>
 					Your tongue changes to a cock or your mouth into a vagina, based on your gender.  You may choose which one (or to have both) <em>now</em> if you have <strong>Futanari</strong>.  The new organ is fully fertile, slurs speech a little, and makes hiding your arousal difficult.  It does not otherwise restrict normal mouth functions.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="do d"><span class="t">Collar</span>
+				<td class="child" colspan="2"><span class="a1">Collar</span>
 					Upon <em>activation</em>, a discreet, slim collar appears on your neck. It is indestructible and cannot be removed.
 				</td>
-				<td class="d dr do" rowspan="1"><span class="m">Genital Collar</span>
+				<td class="child"><span class="a2">Genital Collar</span>
 					You have a chain hanging from a genital piercing.
 				</td>
-				<td class="u d" colspan="1"><span class="m">Parent</span>
+				<td class="parent"><span class="a2">Parent</span>
 					Guardians believe they are your birth parents. Choose <em>now</em> if present Guardian(s) are your genetic parents, and the only <em>family</em>. You resemble the current Guardian(s), but a Guardian will be affected by <strong>Futanari</strong>. With <strong>Metamorphosis</strong> the opposite occurs, a Guardian resembles you.
 				</td>
-				<td class="u d" colspan="1"><span class="m">Age-Appropriate</span>
+				<td class="parent"><span class="a2">Age-Appropriate</span>
 					You will live with your guardian, and they will force you to, discipline you, or scold you until you to work or attend school/college. They will control all your money from any source.
 				</td>
-				<td class="u d" colspan="1"><span class="m">Incestuous</span>
+				<td class="parent"><span class="a2">Incestuous</span>
 					Your Guardian will have sex with you. They're very insistent on you keeping it a secret, unless you also have <strong>Incest</strong>.
 				</td>
-				<td class="u d" colspan="1"><span class="t">Disciplinarian</span>
+				<td class="parent"><span class="a1">Disciplinarian</span>
 					Your Guardian is very keen on discipline, and has very high standards of behavior. You can count on being spanked at least once a day.
 				</td>
 			</tr>
 			<tr>
-				<td class="u d do" rowspan="1"><span class="m">Crude Collar</span>
+				<td class="parent child"><span class="a2">Crude Collar</span>
 					Your collar is now a crude metal collar.
 				</td>
-				<td class="uo d do dr" colspan="2"><span class="m">Leash</span>
+				<td class="parent-optional child" colspan="2"><span class="a2">Leash</span>
 					There's a leash attached to you. You can't sit down, lie comfortably, or go to sleep without having your leash held or hung from something nearby.
 				</td>
-				<td class="d dr do" colspan="4"><span class="t">Love<img class="u_svg"/></span>
+				<td class="child" colspan="4"><span class="a1">Love<img class="u_svg"/></span>
 					On <em>activation</em>, you fall in love with the first person you see, unless you're already in love, or at your option, your master, owner, or guardian.
 				</td>
-				<td class="d" rowspan="2"><span class="m">Living Headless</span>
+				<td rowspan="2"><span class="a2">Living Headless</span>
 					Your head safely detaches from your body just above the neck. Breathing and eating continue to function normally, as if they were always connected.  There is a weak force of attraction that will keep your head in its normal location, but low levels of force (strong breeze, light pushing, etc) will cause them to split.  You retain full control of your body when they are separated.
 				</td>
 			</tr>
 			<tr>
-				<td class="d u"><span class="h">Posture Collar</span>
+				<td class="parent"><span class="a3">Posture Collar</span>
 					Your collar is now a rigid posture collar.
 				</td>
-				<td class="d u"><span class="h">Led<img class="p_svg"/></span>
+				<td class="parent"><span class="a3">Led<img class="p_svg"/></span>
 					You're not allowed to move the far end by yourself more than once a day,
 					and while you're doing so, you must offer it to any passer-by. If you have a master, guardian, or owner, they will hold the other end.
 				</td>
-				<td class="u d" colspan="1"><span class="m">Control<img class="u_svg"/></span>
+				<td class="parent"><span class="a2">Control<img class="u_svg"/></span>
 					Being pulled by your leash is incredibly physically arousing for you, keeping you on the verge of orgasm, but never quite getting there. While you're being pulled along, you can't help but doing or saying anything your leash holder wants.
 				</td>
-				<td class="d u"><span class="h">Needy</span>
+				<td class="parent"><span class="a3">Needy</span>
 					You need the presence of your Love constantly. If you don't have it, you become too depressed to do anything, or even move.
 				</td>
-				<td class="d u"><span class="h">Effacing</span>
+				<td class="parent"><span class="a3">Effacing</span>
 					You've told your love of your pathetic little crush, but that doesn't mean anything to them, of course. You will serve them, in bed and out, loyally and without jealousy.
 				</td>
-				<td class="d u"><span class="h">Secret</span>
+				<td class="parent"><span class="a3">Secret</span>
 					You're too shy to let your Love know that you exist. But you have to follow them everywhere.  Cannot take with <strong>Effacing</strong>.
 				</td>
-				<td class="d u"><span class="h">Murderous<img class="u_svg"/></span>
+				<td class="parent"><span class="a3">Murderous<img class="u_svg"/></span>
 					You will feel a murderous rage against any rival for your Love.
 				</td>
 			</tr>
 			<tr>
-				<td class="d do dr" colspan="2"><span class="h">Impairment</span>
+				<td class="child" colspan="2"><span class="a3">Impairment</span>
 					The use of one your limbs (Choose <em>now</em>) is disabled, about half the time you're awake.  If you took <strong>Tentacles</strong>, your tentacles do not count as limbs for the purpose of any of these drawbacks.  For this and all subsequent drawbacks, you must have at least the specified number of limbs beforehand, functioning normally.  You may not take this with <strong>Amorphous</strong> or <strong>Need a Hand?</strong>.  If you have at least 8 limbs from the <strong>Inhuman</strong> power, it applies to one quarter of them, rounded down.
 				</td>
-				<td class="d do dr" colspan="1"><span class="m">Slimy</span>
+				<td class="child"><span class="a2">Slimy</span>
 					Your skin slowly releases a slime that is either sticky or slick, choose <em>now</em>.  It will soak through your clothes and discourage people from shaking your hand.
 				</td>
-				<td class="d do dr" colspan="2"><span class="t">Sweat<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child" colspan="2"><span class="a1">Sweat<img class="u_svg"/><img class="g_svg"/></span>
 					Choose <em>now</em> for either Armpits or Feet, it may be both. Including your choice, your genitals and ass will always be slightly sweaty and externally lubricated. The natural scent of your bare genitals are more potent and pheromonal responses will cause those unattracted to you to perceive this body odour as disgusting and strangers generally avoid you if possible. Clothing does not count as preventing this drawback, as it will soak through just barely enough. Full-coverage such as latex and rubber may trap and intensify it into a putrid stink until it dissipates over 48 hours.
 				</td>
-				<td class="do d" rowspan="1"><span class="m">Sniff<img class="p_svg"/><img class="g_svg"/></span>
+				<td class="child"><span class="a2">Sniff<img class="p_svg"/><img class="g_svg"/></span>
 					You may only greet individuals normally thrice. Else-wise you must always sniff an intimate location they direct you too.
 				</td>
-				<td class="d do dr" rowspan="1"><span class="t">Small Fit</span>
+				<td class="child"><span class="a1">Small Fit</span>
 					Your cock is too large to fit most women, or your cunt is too small to fit most cocks, unless forced. This hurts.
 				</td>
-				<td class="d do dr" rowspan="1"><span class="t">Large Fit</span>
+				<td class="child"><span class="a1">Large Fit</span>
 					If male, your cock is very small- if female, your cunt is cavernous, and too large for most cocks to get off in. Cannot take with <strong>Small Fit</strong>.
 				</td>
 			</tr>
 			<tr>
-				<td class="u d do dr" rowspan="1"><span class="m">Double the Offer</span>
+				<td class="parent child"><span class="a2">Double the Offer</span>
 					Two limbs, as above (Choose <em>now</em>).  If you have at least 8 limbs from the <strong>Inhuman</strong> power, it applies to half of them, rounded down.
 				</td>
-				<td class="d u dr do" colspan="1"><span class="s">Amputee</span>
+				<td class="parent child"><span class="a4">Amputee</span>
 					The limb(s) you selected are not paralyzed, but amputated. You still have stumps. Your rings turn into earrings. You can will your earrings to detach.  When the ring is <em>deactivated</em> your limbs regrow over the course of a day.
 				</td>
-				<td class="d u dr do" rowspan="1"><span class="m">Slug Trail<img class="u_svg"/></span>
+				<td class="parent child"><span class="a2">Slug Trail<img class="u_svg"/></span>
 					Your slime is now produced fast enough to drip in large quantities off your body, leaving trails or large globs behind you.  You are now a janitor's worst nightmare.
 				</td>
-				<td class="d u dr do" rowspan="1"><span class="m">Sauna<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a2">Sauna<img class="u_svg"/><img class="g_svg"/></span>
 					Your entire body will now always be damp and dripping with sweat regardless of temperature or clothing. Every area that requires 'being touched' now includes the sense of smell on exposed flesh. Covering your crotch is enough to prevent <strong>Submissive</strong> from activating in this manner, but not <strong>Rape Touch</strong>.				</td>
-				<td class="d u" rowspan="1"><span class="t">Unnatural Smell<img class="u_svg"/></span>
+				<td class="parent"><span class="a1">Unnatural Smell<img class="u_svg"/></span>
 					Rather than simply sweat, your body odor takes on a decidedly abnormal smell.  It can be chemical or non-human, but must be generally unpleasant.  Choose the exact form <em>now</em>.
 				</td>
-				<td class="u d" colspan="1"><span class="m">Olfactory Torment<img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Olfactory Torment<img class="p_svg"/><img class="g_svg"/></span>
 					During sex, and before you orgasm, you must be able to smell some area of your partner that they consider degrading, or disgusting. This may include clothing.</td>
-				<td class="d u" rowspan="1"><span class="m">Bad Fit</span>
+				<td class="parent"><span class="a2">Bad Fit</span>
 					Your cock is so large it can no longer get hard, or your cunt is so tight you can't be penetrated at all.  Cannot take with <strong>Ready</strong>.
 				</td>
-				<td class="d u" colspan="1"><span class="m">Size Matters<img class="u_svg"/></span>
+				<td class="parent"><span class="a2">Size Matters<img class="u_svg"/></span>
 					Everyone you meet is instinctively aware of the suboptimal size of your parts.  Every person you meet for the first time has a 1/4 chance to openly call you out on it, if anyone else is nearby they will join in by laughing.
 				</td>
 			</tr>
 			<tr>
-				<td class="u d do dr" rowspan="1"><span class="m">Fashionable Asymmetry</span>
+				<td class="parent child"><span class="a2">Fashionable Asymmetry</span>
 					Three limbs, as above (Choose <em>now</em>).  If you have at least 8 limbs from the <strong>Inhuman</strong> power, it applies to three quarters of them, rounded down.
 				</td>
-				<td class="d u" colspan="1"><span class="m">Pillow</span>
+				<td class="parent"><span class="a2">Pillow</span>
 					You don't even have stumps, just smooth skin where your limbs should be.
 				</td>
-				<td class="d u " colspan="2"><span class="m">Foul Residue<img class="u_svg"/></span>
+				<td class="parent" colspan="2"><span class="a2">Foul Residue<img class="u_svg"/></span>
 					Your scent is no longer tolerable or erotic, any left over slime now emits this foul odor as if you were standing right there.
 				</td>
-				<td colspan="2" class="do d"><span class="t">Parasite Worms</span>
+				<td class="child" colspan="2"><span class="a1">Parasite Worms</span>
 					On <em>Activation</em> your body is infested with parasitic worms.  They cause minor discomfort, increased eating and sleeping, and occasionally (once every few days) arousal.  They are not visible to others.  They cannot be removed while the ring is active.
 				</td>
-				<td class="d do dr" colspan="2"><span class="t">High Output</span>
+				<td class="child" colspan="2"><span class="a1">High Output</span>
 					Requires a cock.  You now produce much more semen than you normally would. This becomes uncomfortable if you don't get off for a few days.
 				</td>
 			</tr>
 			<tr>
-				<td class="d u" colspan="1"><span class="m">Quad</span>
+				<td class="parent"><span class="a2">Quad</span>
 					All your limbs, as above.  You must have had at least four functioning limbs beforehand.
 				</td>
-				<td class="d"><span class="m">Neet<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td><span class="a2">Neet<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					You must not leave your dwelling or interact with normal human beings for more than three hours per week.  This does not apply to interactions mandated by other drawbacks.
 				</td>
-				<td class="d" colspan="1"><span class="t">Forget</span>
+				<td><span class="a1">Forget</span>
 					You forget your old life while wearing the ring. You always remember that you have another life, unless you also take <strong>Full-time</strong>
 				</td>
-				<td class="d" colspan="1"><span class="m">Stench of Society<img class="u_svg"/><img class="g_svg"/></span>
+				<td><span class="a2">Stench of Society<img class="u_svg"/><img class="g_svg"/></span>
 					Your sense of smell is noticeably improved while everyone in a 4 meter radius of you temporarily acquires the <strong>Sweaty</strong> drawback. You may choose <em>now</em> between Armpits, Feet, Ass, or Genitals that this applies too. Their choices will always default to this with the <strong>Sniff</strong> and <strong>Olfactory Torment</strong> drawback(s).
 				</td>
-				<td class="d do u"><span class="t">Mind Altering</span>
+				<td class="parent child"><span class="a1">Mind Altering</span>
 					The worms begin to affect your thinking in a variety of ways.  This may include: submissive behavoir, protecting worms or other hosts, eating foods to their liking (which may including rotting matter), etc.
 				</td>
-				<td class="d do u"><span class="m">Infectious<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a2">Infectious<img class="u_svg"/><img class="g_svg"/></span>
 					The worms can be spread by contact with others and may be visible in mouth or sex organs.
 				</td>
-				<td class="d u" rowspan="2" colspan="1"><span class="m">Ball Inflation</span>
+				<td class="parent" rowspan="2"><span class="a2">Ball Inflation</span>
 					Your cum volume is doubled.  Your balls expand the longer you go without cumming.  They reach a maximum of five times your normal radius after a week.  If that limit is reached they become uncomfortable and may leak slowly until they fully drain or you orgasm.
 				</td>
-				<td class="u d dr do" rowspan="1"><span class="t">Splooge</span>
+				<td class="parent child"><span class="a1">Splooge</span>
 					Your output is immense. You easily fill a beer glass with every ejaculation. You must also ejaculate once a day to avoid discomfort.</td>
 			</tr>
 			<tr>
-				<td colspan="4" class="do d"><span class="m">Endosoma<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child" colspan="4"><span class="a2">Endosoma<img class="u_svg"/><img class="g_svg"/></span>
 					You can swallow people up to twice your size in any digestive or sexual orifices you choose <em>now</em>. They are safe from any harm, and attain the power of <strong>No Sustenance</strong> and are cleared of <em>waste</em> during the act and while inside of you for the 12 hours they are kept. If this is a digestive orifice they <em>may</em> reside in a chamber around your lower guts, not your stomach. At the end of that time period they may escape, getting ejected in a <em>fitting method</em> and it will be slightly uncomfortable for you. Your jaw and other organs will stretch to fit when necessary. If you have <strong>Pocket Space</strong> the compression while <em>devouring</em> removes size limitations. There <em>may</em> be no bulge but you will still feel them tightly compressed within.	<br>When you do not have anyone in you or haven't in a couple of days, you feel a painful hunger, equivalent of having not eaten in few days.  This feeling becomes worse the longer you go. Only sentient subjects satisfy the condition.
 				</td>
-				<td colspan="2" class="d do u"><span class="h">Aggressive Infection<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child" colspan="2"><span class="a3">Aggressive Infection<img class="u_svg"/><img class="g_svg"/></span>
 					Once every week or so, when an opportunity arises, the worms will drive you to forcibly infect another person with the worms.  You do not have a say in the matter.
 				</td>
-				<td class="u d" rowspan="1"><span class="t">Cumflation<img class="u_svg"/></span>
+				<td class="parent"><span class="a1">Cumflation<img class="u_svg"/></span>
 					Your already high output expands inside of your partners, causing significant belly inflation and drainage.  It produces a little pain and a lot of discomfort.  It lasts about 3 hours.
 				</td>
 			</tr>
 			<tr>
-				<td rowspan="1" colspan="2" class="d u do dr"><span class="t">Unbirth<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent child" colspan="2"><span class="a1">Unbirth<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					Requires a vagina, and <strong>overrides</strong> your previous choice. You will unbirth a subject into your womb. Someone who has been unbirthed is contained for at least one day, but you may choose to retain them for up to two weeks unless they choose to stay. While someone is unbirthed you do not experience the hunger effect from <strong>Endosoma</strong>. It is pleasurable to take someone in, but pushing them out is always painful, slightly less than standard childbirth and their size does not affect this. You must unbirth someone at least once per month.
 				</td>
-				<td rowspan="1" class="u d"><span class="t">Rude Guest<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a1">Rude Guest<img class="u_svg"/><img class="g_svg"/></span>
 					You can now hear a <em>devoured</em> subject somewhat muffled speech and feel their struggles. Their struggles may be slightly painful or nauseating. After being designated <em>permanent</em>, their struggles will slowly subside after a week before they can be merged or digested, but will then persist as fat for the following week.
 				</td>
-				<td rowspan="1" class="u d"><span class="s">Permanent Vore<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a4">Permanent Vore<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					At least once per month a victim must be <em>permanently</em> devoured. Once designated, they cannot be removed from your body. The only remaining actions are merging their soul into the orifice devoured them to remove the bulge, or utterly digest and kill them. Trapping someone supresses the hunger effect from <strong>Endosoma</strong> for four weeks. You may choose at any time to digest a <em>trapped</em> subject. Cannot be taken with the <strong>Unbirth</strong> drawback.
 				</td>
-				<td colspan="2"  class="d u"><span class="m">Mind Worms<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent" colspan="2" ><span class="a2">Mind Worms<img class="u_svg"/><img class="g_svg"/></span>
 					Once every week the worms take full control of your body in order to find a target for infection.  They can interact with other people in a normal fashion, and in fact are good at getting random other people into bed.  You feel and sense everything you normally would but have no control.  They will have control until they infect someone or six hours has passed, which ever comes first.  They will not have your mannerisms, may dress differently and provocatively. Your eyes change cosmetically while they have control, eye color may go red, the whole eye turn white, etc, choose <em>now</em>.  This replaces the effect of <strong>Aggressive Infection</strong>.
 				</td>
-				<td colspan="2"  class="d"><span class="m">Shrunken<img class="u_svg"/></span>
+				<td colspan="2" ><span class="a2">Shrunken<img class="u_svg"/></span>
 					Cannot be taken with <strong>Masochism</strong>. Once every week you will shrink to 1/10th of you size, to a maximum of 20 Centimeters tall. Powers and Drawbacks will scale with it. You cannot be crushed, suffocate, or feel extreme pain while this drawback is active, but you will compress down and feel the pressure of whatever is bearing down on you. Your presence can be sensed from 6 meters away.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"class="u d"><span class="m">Rebirth<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent" colspan="2"><span class="a2">Rebirth<img class="u_svg"/><img class="g_svg"/></span>
 					Unbirthed subjects are now reborn as your child and are always retained for 6 months.  Genetically they become your child with that person which may result in sex changes.  They are age regressed as a normal child.  If you took <strong>Inhuman</strong> they will be your sort of creature.  If you took <strong>Multiple Birth</strong> you will birth 2 or 3 as their fraternal  siblings at the same time.  They retain their full memory.  You only must unbirth someone once each year.
 				</td>
-				<td class="d"><span class="t">Marked<img class="u_svg"/></span>
+				<td><span class="a1">Marked<img class="u_svg"/></span>
 					People will now be compelled to write on you after sex. Anything written will stay as long as permanent marker would.
 				</td>
-				<td colspan="1" class="d"><span class="t">Smooches<img class="g_svg"/><img class="p_svg"/></span>
+				<td><span class="a1">Smooches<img class="g_svg"/><img class="p_svg"/></span>
 					Magical opaque lipstick is always applied to your lips, it's design can be changed weekly. Every (french) kiss must be enthusiastically returned and oral sex must include leaving several kiss-marks on their person. The recipient can choose to keep individual marks. You are instintively known as the cause of those marks.
 				</td>
-				<td colspan="2" class="d"><span class="h">Obey Trigger<img class="u_svg"/><img class="g_svg"/></span>
+				<td colspan="2"><span class="a3">Obey Trigger<img class="u_svg"/><img class="g_svg"/></span>
 					A certain uncommon word will make you particularly suggestible to commands. A certain sentence containing that word makes you obey every command you are told for the next hour. You stay conscious, but your body moves on its own to comply. If taken with <strong>Sanguine Debauchery</strong>, your master will know both triggers, and commands can slowly affect your mind if your master intends to. Doesn’t work when you say the word.
 				</td>
-				<td colspan="2" class="d"><span class="t">Chosen For You</span>
+				<td colspan="2"><span class="a1">Chosen For You</span>
 					Cannot be taken with <strong>Choose Wisely</strong> The method you receive sexual pleasure is determined by your partner. They must tell you how pleasurable the act is for you to feel it, and it must be sexual in nature. Examples are "Giving a Footjob" or "Licking Armpits."
 				</td>
 			</tr>
 			<tr>
-				<td class="do d"><span class="t">Clumsy</span>
+				<td class="child"><span class="a1">Clumsy</span>
 					You very often bump into things, trip while walking and drop things.
 				</td>
-				<td class="do d"><span class="m">New Sex<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="child"><span class="a2">New Sex<img class="u_svg"/><img class="p_svg"/></span>
 					You mustn’t have sex with anyone you’ve already had sex with more than once a week. It doesn’t count if you’re raped.
 				</td>
-				<td colspan="2" class="do d"><span class="m">Absolutely Avorable<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="child" colspan="2"><span class="a2">Absolutely Avorable<img class="u_svg"/><img class="g_svg"/></span>
 					Every person (that is at least one half your size) you interact with for the first time, or first time in a year, has a 1/4 chance to be extremely compelled to eat you.  This mechanically functions exactly as the <strong>Vore</strong> drawback, only they will spit you back out in 3 hours.  This will not trigger if you have been eaten in the last 48 hours.
 				</td>
-				<td colspan="4" class="do d"><span class="h">Parasite Suit</span>
+				<td class="child" colspan="4"><span class="a3">Parasite Suit</span>
 					A parasitic suit appears around you for as long as this drawback is in effect. It will leave all your holes open and covers only your torso, and is slim enough to be kept under clothes. It activates about four times a week for one continuous hour each time. By default, when active, it only stimulates the skin on your chest and around your buttcheeks.
 				</td>
 			</tr>
 			<tr>
-				<td class="u d"><span class="m">Sorry<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Sorry<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					If you inconvenience someone by being clumsy, you must repay them with a sexual favor of their choice.
 				</td>
-				<td class="d u"><span class="h">Virgin Sex<img class="p_svg"/></span>
+				<td class="parent"><span class="a3">Virgin Sex<img class="p_svg"/></span>
 					You mustn’t have sex with non-virgins more than once a week. It doesn’t count if you’re raped.
 				</td>
-				<td colspan="2" class="d u"><span class="t">Unborn<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent" colspan="2"><span class="a1">Unborn<img class="u_svg"/><img class="g_svg"/></span>
 					The compulsion to eating you effect of <strong>Absolutely Avorable</strong> is replaced by a compulsion to unbirth you instead.  Only  women you interact with can trigger the effect.  It otherwise functions as <strong>Unbirth</strong> except that they will release you in about 12 hours.  This will not trigger if you have been unbirthed in the last four days.
 				</td>
-				<td class="d u"><span class="t">Mouth Abuse</span>
+				<td class="parent"><span class="a1">Mouth Abuse</span>
 					When active, the parasitic suit will also stimulate your mouth using a tentacle.
 				</td>
-				<td class="d u"><span class="t">Anal Abuse</span>
+				<td class="parent"><span class="a1">Anal Abuse</span>
 					When active, the parasitic suit will also stimulate your anus using a tentacle.
 				</td>
-				<td class="d u"><span class="t">Genital Abuse</span>
+				<td class="parent"><span class="a1">Genital Abuse</span>
 					When active, the parasitic suit will also stimulate your genital organ using a tentacle.
 				</td>
-				<td class="d u"><span class="h">Symbiosis</span>
+				<td class="parent"><span class="a3">Symbiosis</span>
 					The number of individual hours the parasitic suit will stimulate you for every week is multiplied by five.
 				</td>
 			</tr>
 			<tr>
-				<td class="d do" rowspan="1" colspan="1"><span class="h">Permanent</span>
+				<td class="child"><span class="a3">Permanent</span>
 					When you take the ring off, it immediately puts itself back on after one day. You can also take seven continuous days of disabled drawbacks every two months, you choose when.  You must also have at least one other drawback besides <strong>Full-Time</strong>.
 				</td>
-				<td class="d do" colspan="1"><span class="m">Exposed<img class="u_svg"/><img class="p_svg"/></span>
+				<td class="child"><span class="a2">Exposed<img class="u_svg"/><img class="p_svg"/></span>
 					Choose <em>now</em> between your nipples and your crotch. What you have chosen must be exposed half of the time you’re awake each day.
 				</td>
-				<td colspan="3" class="do d"><span class="m">Bondage Sleep<img class="p_svg"/></span>
+				<td class="child" colspan="3"><span class="a2">Bondage Sleep<img class="p_svg"/></span>
 					You must be in heavy bondage when you go to sleep at least four times a week. Whatever bondage you wear is guaranteed to let you loose at most half an hour after you wake up. Cannot be taken together with <strong>Never Sleep</strong>. Careful: this makes you vulnerable.
 				</td>
-				<td colspan="1" class="do d"><span class="m">Caged<img class="p_svg"/></span>
+				<td class="child"><span class="a2">Caged<img class="p_svg"/></span>
 					You must be in a cramped cage for two continuous hours every day while you’re awake.
 				</td>
-				<td colspan="1" class="d"><span class="m">Foreigner<img class="p_svg"/></span>
+				<td><span class="a2">Foreigner<img class="p_svg"/></span>
 					You are forbidden from living a city that can speak or write your native tongue as it's primary or secondary language.
 				</td>
-				<td rowspan="1" class="do d"><span class="m">Permission<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="child"><span class="a2">Permission<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					Before you touch, control, affect, attack, or read the mind of someone, you must get their explicit permission to do so for the day.
 				</td>
 			</tr>
 			<tr>
-				<td class="d u"><span class="h">Full-time</span>
+				<td class="parent"><span class="a3">Full-time</span>
 					You don’t get the seven days off time anymore. If you want, you can choose <em>now</em> to have the ring become immaterial; its effect permanent, but its physical presence lacking.
 				</td>
-				<td class="d u" colspan="1"><span class="m">Double Exposed<img class="p_svg"/></span>
+				<td class="parent"><span class="a2">Double Exposed<img class="p_svg"/></span>
 					When you would have to expose the one, you now also have to expose the other.
 				</td>
-				<td class="d u"><span class="t">Vacuum Bed<img class="p_svg"/></span>
+				<td class="parent"><span class="a1">Vacuum Bed<img class="p_svg"/></span>
 					Twice per week, during <strong>Bondage Sleep</strong>, you must be in a vacuum bed instead.
 				</td>
-				<td class="d u"><span class="m">Bed Toys<img class="p_svg"/></span>
+				<td class="parent"><span class="a2">Bed Toys<img class="p_svg"/></span>
 					During <strong>Bondage Sleep</strong>, you must also be stimulated by toys for the whole sleep.
 				</td>
-				<td class="d u" colspan="2"><span class="m">Bondage Cage<img class="p_svg"/></span>
+				<td class="parent" colspan="2"><span class="a2">Bondage Cage<img class="p_svg"/></span>
 					Twice per week, during <strong>Bondage Sleep</strong>, you must be in suspension bondage in your cage. This will often entail a tight crotch rope.
 				</td>
-				<td class="d do"><span class="t">Tattoo<img class="g_svg"/></span>
+				<td class="child"><span class="a1">Tattoo<img class="g_svg"/></span>
 					The goddess will bless you with a lewd tattoo somewhere concealed on you body. She may change it up every now and then.
 				</td>
-				<td rowspan="1" class="u d"><span class="m">Self-perm<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Self-perm<img class="u_svg"/><img class="p_svg"/><img class="g_svg"/></span>
 					You must get permission from someone you don’t know before you touch yourself. They may accept under certain conditions, which you must comply with.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3" class="do d"><span class="m">Enema<img class="p_svg"/></span>
+				<td class="child" colspan="3"><span class="a2">Enema<img class="p_svg"/></span>
 					You must receive a milk enema two times a week.
 				</td>
-				<td class="d do" colspan="2"><span class="t">Piercings</span>
+				<td class="child" colspan="2"><span class="a1">Piercings</span>
 					Choose <em>now</em> one of the following: a set of nipple piercings, or a tongue piercing. You now have unremovable versions of what you have chosen. All piercings act as strong erogenous zones, but won’t get you off; try not to get distracted too often.
 				</td>
-				<td colspan="1" class="d"><span class="t">New Hymen<img class="u_svg"/></span>
+				<td><span class="a1">New Hymen<img class="u_svg"/></span>
 					Can only be taken if you have a vagina while wearing this ring. Each night, your hymen will reappear.
 				</td>
-				<td class="d u"><span class="m">Public Tattoo<img class="p_svg"/></span>
+				<td class="parent"><span class="a2">Public Tattoo<img class="p_svg"/></span>
 					Your tattoo will now be somewhere easy to reveal; and it must be easily visible half of the time you are awake.
 				</td>
-				<td rowspan="1" rowspan="1" class="do d"><span class="m">Large Breasts</span>
+				<td class="child"><span class="a2">Large Breasts</span>
 					<em>Upon activation</em>, your breasts grow over the next week to be too big for your frame. Embarrassingly big. You get looks and come-ons, and finding a bra is a nightmare.<em>Upon deactivation</em> Your breasts shrink over the same time frame.
 				</td>
 			</tr>
 			<tr>
-				<td class="d u do dr"><span class="m">Hold It<img class="p_svg"/></span>
+				<td class="parent child"><span class="a2">Hold It<img class="p_svg"/></span>
 					You must hold the enema for two hours each time. A plug is recommended.
 				</td>
-				<td class="d u do dr"><span class="t">Cum Enema</span>
+				<td class="parent child"><span class="a1">Cum Enema</span>
 					The enema is now semen. Don’t worry, you are provided with it in enough quantity.
 				</td>
-				<td class="d u do dr"><span class="t">Fluid Inflation</span>
+				<td class="parent child"><span class="a1">Fluid Inflation</span>
 					The enema now causes uncomfortable inflation.
 				</td>
-				<td class="d u" colspan="1"><span class="t">Both Sets</span>
+				<td class="parent"><span class="a1">Both Sets</span>
 					You now wear both nipple and tongue piercings.
 				</td>
-				<td class="d u"><span class="m">Visible Piercing<img class="p_svg"/></span>
+				<td class="parent"><span class="a2">Visible Piercing<img class="p_svg"/></span>
 					Can only be taken if you have nipple piercings. Your nipple piercings must be revealed half of the time you are awake; them being looked at in public is very erogenous. This duration cannot overlap with that of <strong>Exposed</strong>.
 				</td>
-				<td colspan="2" class="do d"><span class="t">Cumbath<img class="p_svg"/></span>
+				<td class="child" colspan="2"><span class="a1">Cumbath<img class="p_svg"/></span>
 					A random day of the week each week, you will be woken up early in the morning, be taken to a bathtub full of semen in which you must bathe, and then let go. You mustn’t shower until the following day.
 				</td>
-				<td colspan="1" class="d u do dr"><span class="m">Huge Breasts</span>
+				<td class="parent child"><span class="a2">Huge Breasts</span>
 					Your breasts grow to the size of your torso. Moving is difficult.  If you took <strong>Abnormal Breasts</strong> you have twice your torso's volume to distribute over breasts and breast-like structures.  Your back can support the extra weight without issue.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3" class="d u"><span class="m">Cumflated</span>
+				<td class="parent" colspan="3"><span class="a2">Cumflated</span>
 					You must now retain the enema for 4 hours instead of 2.  The inflation will cause your midsection to expand to the point you will look 9 months pregnant.  If female, unprotected sex will also cause this inflation for a couple of hours.
 				</td>
-				<td colspan="2" class="d" class="m"><span class="m">Cum Addict<img class="u_svg"/><img class="g_svg"/></span>
+				<td colspan="2"><span class="a2">Cum Addict<img class="u_svg"/><img class="g_svg"/></span>
 					You enter a weird trance every time you smell any sexual fluid including your own, where you will become very horny and be drawn to have sex with the origin of that smell in order to consume the sexual fluid. The less often that happens, the more your smell of sexual fluids becomes sharp.
 				</td>
-				<td colspan="2" class="d u"><span class="h">Collector<img class="u_svg"/></span>
+				<td class="parent" colspan="2"><span class="a3">Collector<img class="u_svg"/></span>
 					You must now collect the semen yourself each time. Any semen you put in the bath is multiplied in volume when you enter the bath such that you “only” need to collect a 33cl|11oz can’s worth. You can’t reuse the semen.
 				</td>
-				<td colspan="1" class="u d"><span class="m">Hyper Breasts</span>
+				<td class="parent"><span class="a2">Hyper Breasts</span>
 					Each of your breasts are now as large as the rest of your body (double that but distributable with <strong>Abnormal Breasts</strong>).  You'll need to get them onto a cart to move them.
 				</td>
 			</tr>
 		</table>
 		<!---------------------------------------------------------------->
-		<table>
+		<table id="corruptions">
 			<tr>
-				<td class="c" colspan="7"><h1>Power Corruptions</h1>
+				<td colspan="6"><h1>Power Corruptions</h1>
 					Power corruptions are drawbacks connected to a specific power or powers.  <br>
 					They apply only to the functions or content of that power unless specified.  <br>
 					All of the same rules that apply to drawbacks apply to power corruptions. <br>
 					Any rule or description that applies or specifies "drawback(s)" can be used for corruptions.
 				</td>
 			</tr>
-			<td colspan="3" class="do c"><span>Abomination</span>
-				Requires <strong>Metamorphosis</strong>.<br>
-				The particulars of your form unsettles people.
-			</td>
-			<td colspan="3" class="do c"><span>Dark World</span>
-				Requires <strong>Magical Realm</strong>.<br>
-				The world has a strange and sinister feel to it
-			</td>
+			<tr>
+				<td class="child" colspan="3"><span>Abomination</span>
+					Requires <strong>Metamorphosis</strong>.<br>
+					The particulars of your form unsettles people.
+				</td>
+				<td class="child" colspan="3"><span>Dark World</span>
+					Requires <strong>Magical Realm</strong>.<br>
+					The world has a strange and sinister feel to it
+				</td>
 			</tr>
 			<tr>
-				<td class="c do u"><span class="t">Shunned<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a1">Shunned<img class="u_svg"/><img class="g_svg"/></span>
 					Requires <strong>Inhuman</strong><br>
 					Your new form is considered vile or disgusting by polite society.
 				</td>
-				<td class="c do u"><span class="m">Weakness</span>
+				<td class="parent child"><span class="a2">Weakness</span>
 					Requires <strong>Invulnerability</strong> or <strong>Painless</strong>.<br>
 					Some reasonably abnormal material or substance (choose <em>now</em>) is a natural weakness to your new form.  <Strong>Invulnerability</strong> and <strong>Painless</strong> are disabled at contact and for one hour afterwards.
 				</td>
-				<td class="c u"><span class="t">Contagious Transformation<img class="u_svg"/></span>
+				<td class="parent"><span class="a1">Contagious Transformation<img class="u_svg"/></span>
 					Requires <strong>Futanari</strong> or <strong>Inhuman</strong>.  <br>
 					Exposure to your fluids into an open wound, sex organs, or other soft tissue, causes the subject to turn into a similar sort of creature as you.  The process takes a day and can infect you if the ring is <em>deactivated</em>.  They gain no loyalty to you and will likely not be happy about the change.
 				</td>
-				<td class="c do u"><span class="m">Backward<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent child"><span class="a2">Backward<img class="u_svg"/><img class="g_svg"/></span>
 					Rather than having a mentality that is close to modern, the people in the realm will resemble the European dark ages and the world will be primitive, authoritarian, post-apocalyptic, or otherwise unpleasant.  Possible problems include: a lack of trust in outsiders, hostility to new ideas, poor hygiene, questionable medicine, and no indoor plumbing.
 				</td>
-				<td class="c do u"><span class="t">Powerful Beasts</span>
+				<td class="parent child"><span class="a1">Powerful Beasts</span>
 					Cannot be taken with <strong>Concrete Prison</strong>. The realm is also home to various monsters of great strength or minor supernatural powers.  They pose a threat that increases the further from civilization you go.
 				</td>
-				<td class="c do u"><span class="m">Dark Powers<img class="g_svg"/></span>
+				<td class="parent child"><span class="a2">Dark Powers<img class="g_svg"/></span>
 					The Realm is also home to individuals with powerful magic and evil designs.  They pose a threat to the people in the realm and you by extension.  They may not immediately see you as a threat, but they will not like you for their own various reasons.  <Strong>Vanilla</strong> is also disabled with these people.
 				</td>
 			</tr>
 			<tr>
-				<td class="c u"><span class="m">Hunted<img class="u_svg"/><img class="g_svg"/></span>
+				<td class="parent"><span class="a2">Hunted<img class="u_svg"/><img class="g_svg"/></span>
 					Your new form is treated with open hostility.  Dedicated hunters will also come after you, every month or two.  If you have <strong>Weakness</strong>, hunters will know your weakness 3/4 of the time.
 				</td>
-				<td rowspan="1" colspan="1" class="c u"><span class="m">Enervate</span>
+				<td class="parent"><span class="a2">Enervate</span>
 					Requires <strong>Strength</strong> or <strong>Immunity</strong>.  Your weakness also suppresses <strong>Strength</strong> and <strong>Immunity</strong>
 				</td>
-				<td colspan="1" class="c"><span class="t">Little Voices<img class="u_svg"/><img class="g_svg"/></span>
+				<td><span class="a1">Little Voices<img class="u_svg"/><img class="g_svg"/></span>
 					Requires <strong>Mindreader</strong>.<br>
 					When you use <Strong>Mindreader</strong> you also pick up all of the surface thoughts of everyone within 6 meters of the intended target.  Their volume falls with distance and rises with force of personality.  It makes concentrating on one mind much more difficult.
 				</td>
-				<td colspan="1" class="c u"><span class="m">Nepotism</span>
+				<td class="parent"><span class="a2">Nepotism</span>
 					Requires <strong>Higher Up</strong>.<br>
 					The structure of your domain is defined around bloodlines and favors rather than ability.  Distant relatives will hold expensive pointless jobs to provide a living.  Powerful positions may contain jealous siblings or cousins and may produce factions or sow instability.
 				</td>
-				<td class="c u"><span class="t">Rape Beasts</span>
+				<td class="parent"><span class="a1">Rape Beasts</span>
 					The monsters in the realm are no longer content to simply eat livestock and kill adventurers, but will now seek to rape other creatures, particularly you.  If you have <strong>Animally Fertile</strong> it applies to these creatures as well.
 				</td>
-				<td class="c do u"><span class="m">Army of Darkness</span>
+				<td class="parent child"><span class="a2">Army of Darkness</span>
 					One of the dark powers also controls a state and has a large army.  If you have selected <strong>King in the North</strong> this state's army is three times the power of yours.  <strong>Move Along</strong> is disabled in this power's territory.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="1" class="c"><span class="m">Ruling Class</span>
+				<td><span class="a2">Ruling Class</span>
 					Requires <strong>New Normal</strong> and <strong>Permanent</strong>.
 					<br>This may apply to a single purchase and you cannot be that choice. This cannot be taken with <strong>Futanari</strong> if it conflicts. They control the entire upper-class of society, using whoever they want for breeding and sexual entertainment.
 				</td>
-				<td colspan="1" class="c"><span class="t">Way Up There<img class="p_svg"/></span>
+				<td><span class="a1">Way Up There<img class="p_svg"/></span>
 					Requires <strong>Stargate</strong>.
 					<br>Any object that is illegal in one of the two realms must be smuggled through the stargate in your ass, it cannot be transferred by <strong>Pocket Space</strong>, openly carried, or carried by someone else.
 				</td>
-				<td colspan="1" class="c"><span class="m">Writhing<img class="u_svg"/></span>
+				<td><span class="a2">Writhing<img class="u_svg"/></span>
 					Requires <strong>Tentacles</strong><br>
 					Your tentacles move by their own volition when you are not concentrating on them.  They will act in a generally lewd fashion and prevent attempts to conceal them.
 				</td>
-				<td colspan="1" class="c"><span class="t">Chain Reaction</span>
+				<td><span class="a1">Chain Reaction</span>
 					Requires <strong>Spread Fetish</strong>. Cannot be taken with <Strong>Conditioned</strong>.<br>
 					Every other day that <Strong>Spread Fetish</strong> is active they gain another fetish that is at least slightly related.  If initial ordered fetish is something you like, the new ones will generally be ones that you do not and the reverse.  Each new fetish is kept for the same amount of time the original one is ordered, separately.
 				</td>
-				<td colspan="1" class="c" class="t"><span class="t">Conditioned</span>
+				<td><span class="a1">Conditioned</span>
 					Requires <Strong>Spread Fetish</strong>. Cannot be taken with <Strong>Chain Reaction</strong>.<br>
 					You can still choose whether or not this is active. It may instead be permanent, but you no longer automatically afflict fetishes. You must manually perform the sexual acts once a day over a week while masturbating them to teach them pleasure from it, and finalize the imprinting.
 				</td>
-				<td class="c u"><span class="m">Proliferation</span>
+				<td class="parent"><span class="a2">Proliferation</span>
 					Requires <strong>Stargate</strong>.<br>
 					The dark powers will eventually figure out how to travel between planes as well.  You can slow this process down with great effort (and some violence).  They can never access your <strong>Pocket Space</strong>.
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="c"><span class="h">Regression Cycle<img class="u_svg"/></span>
+				<td colspan="2"><span class="a3">Regression Cycle<img class="u_svg"/></span>
 					Requires <strong>Immortal</strong>.<br>
 					Requires <strong>Unborn</strong>.<br>
 					Rather than not aging, you age five times faster than normal when not in a womb.  You may elect to stay unbirthed for 9 months to be age regressed to a newborn.  Your host will believe you are properly their child and will treat you accordingly.  People will treat you as your body's new age and will not question your faster growth.  <br>
 					For the first year after a rebirth cycle you cannot <em>Deactivate</em> the ring and your ring age is locked to your body's age.  If you have <strong>Guardian</strong> your new parent(s) replace them.
 				</td>
-				<td colspan="1" class="c"><span class="m">Warped Taste</span>
+				<td><span class="a2">Warped Taste</span>
 					Requires <strong>Refined</strong>. <br>
 					Rather than the normal effect of <strong>Refined</strong>, your mind is altered to find whatever random person is involved in your drawbacks attractive.  You will think your tastes were always this way.
 				</td>
-				<td colspan="1" class="c"><span class="t">Discorporation</span>
+				<td><span class="a1">Discorporation</span>
 					Requires <strong>Amorphous</strong>.
 					<br>You have trouble holding your body shape together and tend to be more of a glob of goo than a human.  Effectively you will not have legs, which reduces your available appendages for <strong>Amorphous</strong> and limbs for <strong>Impairment</strong> by 2.  You will not easily conceal your abnormal shape.
 				</td>
-				<td colspan="1" class="c"><span class="m">Head Games<img class="u_svg"/><img class="g_svg"/></span>
+				<td><span class="a2">Head Games<img class="u_svg"/><img class="g_svg"/></span>
 					Requires <Strong>Mindreader</strong>.<br>
 					Requires <Strong>Magical Realm</strong>.<br>
 					The world is fully of empaths, 10% have access to <strong>Mindreader</strong>, 1% to <strong>Mind Control</strong>, and .1% to <strong>Puppet Master</strong>.  Whether its rivalry or playful teasing, people with at least <strong>Mind Control</strong> prefer to mess with other people that have these abilities.  Anyone who uses <strong>Mindreader</strong> knows whether or not their target has these abilities.  No one will use these abilities to cause you permanent damage.
 				</td>
-				<td colspan="1" class="c"><span class="h">Demon-Man</span>
+				<td><span class="a3">Demon-Man</span>
 					Requires <strong>Monstrous</strong>.<br>
 					Requires <strong>Fuckface</strong> and <strong>Erogenous</strong>.<br>
 					The surface of your body is completely covered in various sex organs and its shape composed of various larger ones.  Your entire body is an erogenous zone.<br>
@@ -2378,24 +2300,24 @@ var svg_data = {
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="c" class="t"><span class="t">Shafted<img class="u_svg"/></span>
+				<td colspan="2"><span class="a1">Shafted<img class="u_svg"/></span>
 					Requires <Strong>Porn Logic</strong>.<br>
 					The size increase only applies to the sex you are <em>least attracted</em>, but the sex you are most attracted is decreased. The minimum percentage is 50%, and is shared for both the increase or decrease.
 				</td>
-				<td colspan="2" class="c"><span class="m">Variety</span>
+				<td colspan="2"><span class="a2">Variety</span>
 					Requires <strong>Versatile</strong>.
 					<br> You cannot use <strong>Versatile</strong> to gain a specific power or suppress a specific drawback for more than 24 hours in a week.
 				</td>
-				<td colspan="3" class="c" class="t"><span class="t">Cruel and Unusual<img class="u_svg"/></span>
+				<td colspan="2"><span class="a1">Cruel and Unusual<img class="u_svg"/></span>
 					Requires <Strong>Eternal Youth</strong>.<br>
 					The Goddess may choose not to free you, and everyone else won't bother. All drawbacks that can activate at the same time to create inescapable predicaments inside of <em>civilization</em> can always inevitably occur. Includes everything you hear could happen as a result while describing your drawbacks. The Goddess will grant you a divine forgiveness once every ten years for you to try again, but for anything completely unavoidable the Goddess will only seek to preserve you and the entrapment.
 				</td>
 				</tr>
 		</table>
 		<!---------------------------------------------------------------------------------------------------->
-		<table>
+		<table id="punishments">
 			<tr>
-				<td class="n" colspan="6"><h1>Punishments</h1>
+				<td colspan="6"><h1>Punishments</h1>
 					You have to choose exactly one punishment for each drawback with a <img class="na p_svg"/> (you can choose the same one for multiple such drawbacks, even on the same ring). When you do something that the drawback says you <em>musn’t</em> do, the punishment will trigger.
 					<!--<br/><br/>
 					Punishments with a <img class="na l_svg"/> are leveled: they will go up one level with each trigger, and will reach their maximum at level 24. They only go down one level continuous month for which they haven’t been triggered.
@@ -2404,97 +2326,96 @@ var svg_data = {
 				</td>
 			</tr>
 			<tr>
-				<td class="n"><span>Bimbofication</span>
+				<td><span>Bimbofication</span>
 					Each trigger of this punishment will go down the <strong>cross-dressing</strong> drawback and its sub-requirements, starting with <strong>cross-dressing</strong> itself. For each drawback triggered, you become less intelligent, equivalent of 10 points off of your IQ (to a minimum of 70).  One month after each trigger, one of these drawbacks will deactivate. If all drawbacks in this tree are taken, <strong>corruption</strong> activates instead. Cannot be taken with <strong>cross-dressing</strong>.
 				</td>
-				<td rowspan="1" class="n"><span>Weakened</span>
+				<td><span>Weakened</span>
 					Your body becomes extremely weak. This slowly fades over a week; for the first hour, you will be unable to support your own weight.
 				</td>
-				<td class="n" colspan="3"><span>Corruption</span>
+				<td colspan="3"><span>Corruption</span>
 					You will crave for sex. Each times this punishment triggers, you will need to have sex two times a day, or you will experience very heavy symptoms of withdrawal. This lasts a month, but with each consecutive time this punishment triggers, the number of sex acts required per day stacks. Will not make you submissive as such, but you’ll be willing do to pretty much anything to get satisfied. Cannot be taken together with <strong>chastised</strong>. If your cravings are not satisfied, you will slowly start to become mad.
 				</td>
-				<td class="n"><span>Edgy</span>
+				<td><span>Edgy</span>
 					This punishment will cause you to edge continuously for three days. At the end of those three days, you get a ruined orgasm. If this punishment is the result of what would be an orgasm, that orgasm doesn’t occur (for example, with <strong>Pleasurer</strong>, if you can’t hold yourself for orgasm, this punishment kicks in just before your orgasm occurs).
 				</td>
 			</tr>
 			<tr>
-				<td class="n" colspan="1"><span>Long Capture</span>
+				<td><span>Long Capture</span>
 					An instance of <strong>bondage capture</strong> will occur with three to all sub-requirements, except up to two sub-requirements you can choose <em>now</em>. The following changes also apply:<br/>- The duration of the capture is now a whole continuous week.<br/>- Giving up has no effect.<br/>- You cannot break free or be broken free.<br/>
 				</td>
-				<td class="n"><span>No Good Feelings</span>
+				<td><span>No Good Feelings</span>
 					You become unable to feel any kind of physical pleasure for a week. If this punishment triggers again during that time, you will start to be unable to feel joy as well.
 				</td>
-				<td colspan="3" class="n"><span>Stop Right There</span>
+				<td colspan="2"><span>Stop Right There</span>
 					Disables the <strong>move along</strong> and <strong>vanilla</strong> for two months: during that time, you can get in trouble with the authorities as you would normally. If this punishment triggers during that time, local authorities receive a vague anonymous tip about your activities, lying if you’ve done nothing wrong; too many may help them track you. The more that punishment is triggered, the more. When <strong>move along</strong> is re-enabled, you are freed from any kind of containment facility you were in. When <strong>vanilla</strong> is re-enabled, what you have done during the downtime will still be remembered as it was perceived then. If no such authority will arrest you, feared envoys of the goddess will.
 				</td>
-				<!--<td rowspan="1" class="n"><span class="">7mn in hell</span>
+				<td><span>7mn in hell</span>
 		Your body will start uncontrollably masturbating by itself vigorously for seven minutes. However, every time you orgasm, the time resets. If this punishment triggers too often, the duration will be longer.
-		</td>-->
-		<td class="n"><span>Physical Reflex</span>
-			You simply can’t do something you <em>mustn’t</em> do. It is physically impossible for you; your body will move on its own if that’s what it takes. Can’t be taken for <strong>temptation</strong>. Sex that <strong>physical reflex</strong> forces you to take part in doesn’t count as you being raped.
-		</td>
+				</td>
+				<td><span>Physical Reflex</span>
+					You simply can’t do something you <em>mustn’t</em> do. It is physically impossible for you; your body will move on its own if that’s what it takes. Can’t be taken for <strong>temptation</strong>. Sex that <strong>physical reflex</strong> forces you to take part in doesn’t count as you being raped.
+				</td>
 			</tr>
 			<tr>
-				<td class="n" colspan="1"><span>Extreme Sub</span>
+				<td><span>Extreme Sub</span>
 					You become extremely submissive for a random duration between an hour and two weeks. Not only that, but you will strongly feel the need to obey, to the point where you will seek orders and ask to be ordered around. During that time, you will also have much reduced sense of shame.
 				</td>
-				<td class="n"><span>Down Time</span>
+				<td><span>Down Time</span>
 					You will be petrified for a random time between a few hours and two weeks. You body is entirely paused, with the exception of your mind and senses.
 				</td>
-				<td class="n" colspan="2"><span>Conditioned</span>
+				<td colspan="2"><span>Conditioned</span>
 					Requires <strong>collar</strong>. For everything that you <em>mustn’t</em> do: you will feel an uncomfortable electric tingling when you consider doing it, a somewhat intense electrical pain when you plan on doing it, and a very painful electrical shock when you finally do it. Will keep you on the right track and make you work to satisfy the drawbacks. Overrides <strong>Painless</strong> and <strong>Masochism</strong>.
 				</td>
-				<td class="n"><span>Cursed</span>
+				<td><span>Cursed</span>
 					Something bad will happen to someone you care about. This can range from a twisted ankle to a dead pet, a robbery, a non-permanent injury, or a relationship breakup. If there is no one you care about, this will happen to you.
 				</td>
-				<td class="n"><span>Fined</span>
+				<td><span>Fined</span>
 					You will be fined a certain sum of money by the goddess. This will always be an amount you can barely afford, so you’ll have to collect more. The more you are indebted to her, the more she will try to make your life miserable.
 				</td>
 			</tr>
-			<td colspan="1" class="n"><span>Livestock</span>
-				Requires <strong>Lactation</strong>, <strong>High Output</strong>, or <strong>Milking</strong>.  Someone, in the next 24 hours, will blindfold you, and throw you into an unmarked van where you will be kept and milked for a couple days.   Afterwards, you will be blindfolded and released on a random highway
-			</td>
-			<td class="n"><span>Busy</span>
-				This punishment greatly increases the frequency or duration of your drawbacks, usually by a factor of two. Can only be taken if you have at least three drawbacks to which this would be applicable.
-			</td>
-			<td class="n"><span>All Dolled Up</span>
-				You are transformed into an inflatable sex doll.  You are used and passed between people, likely deflated between uses.  You cannot move or speak but are fully aware and have full senses.  You revert to normal after 24 hours and cannot be injured in the process.
-			</td>
-			<td colspan="2" class="n"><span>Berry</span>
-				Over the course of an hour after triggering, your body swells and turns blue.  Your body ends up roughly spherical and immobile.  Within 2 hours, you will be kidnapped by a group of orange-skinned midgets, blindfolded, and taken to a factory where the excess fluid is "juiced" out of your breasts and sex organs.   This takes about 24 hours and is fairly uncomfortable.  They will then release you somewhere close to where they took you from.  During the abduction they will also sing a short jingle about your moral failing.
-			</td>
-			<td colspan="1" class="n"><span>Smashing</span>
-				For a week you are forcibly <strong>Shrunken</strong>, and become malleable, crushing you flat, stretching you, or molding you into lingerie is extremely satisfying for aggressors. During free-time not devoted to <em>Jobs, Drawbacks</em> will be spent being squished for the entirety of that time by those intimately closest to you.
-			</td>
+			<tr>
+				<td><span>Livestock</span>
+					Requires <strong>Lactation</strong>, <strong>High Output</strong>, or <strong>Milking</strong>.  Someone, in the next 24 hours, will blindfold you, and throw you into an unmarked van where you will be kept and milked for a couple days.   Afterwards, you will be blindfolded and released on a random highway
+				</td>
+				<td><span>Busy</span>
+					This punishment greatly increases the frequency or duration of your drawbacks, usually by a factor of two. Can only be taken if you have at least three drawbacks to which this would be applicable.
+				</td>
+				<td><span>All Dolled Up</span>
+					You are transformed into an inflatable sex doll.  You are used and passed between people, likely deflated between uses.  You cannot move or speak but are fully aware and have full senses.  You revert to normal after 24 hours and cannot be injured in the process.
+				</td>
+				<td colspan="2"><span>Berry</span>
+					Over the course of an hour after triggering, your body swells and turns blue.  Your body ends up roughly spherical and immobile.  Within 2 hours, you will be kidnapped by a group of orange-skinned midgets, blindfolded, and taken to a factory where the excess fluid is "juiced" out of your breasts and sex organs.   This takes about 24 hours and is fairly uncomfortable.  They will then release you somewhere close to where they took you from.  During the abduction they will also sing a short jingle about your moral failing.
+				</td>
+				<td><span>Smashing</span>
+					For a week you are forcibly <strong>Shrunken</strong>, and become malleable, crushing you flat, stretching you, or molding you into lingerie is extremely satisfying for aggressors. During free-time not devoted to <em>Jobs, Drawbacks</em> will be spent being squished for the entirety of that time by those intimately closest to you.
+				</td>
 			</tr>
 		</table>
 		<!---------------------------------------------------------------->
 		<hr/>
 		<table>
 			<tr>
-				<td class="head" colspan="" style="">
+				<td class="head">
 					Version 1.01 by <em>/u/SGVsbG8gV29ybGQK</em><br/><br/>Directly modified from Enchante/d/ Rings CYOA Version 1.02 by <em>The Slug Guy</em>, which is Directly modified from Enchante/d/ Rings CYOA version 1.21 by <em>a named anon</em> with additions by <em>Lactofork</em><br/><br/>Thanks for the help and support of /tg/’s <em>CYOA general</em> and the excellent work and huge amounts of inspiration to the makers of <em>Interaction CYOA</em>, the <em>Kitsune CYOA</em>, the <em>Magic Pill CYOA</em>, the <em>Paperwork Error CYOA</em>, the <em>Perv Armorsmith CYOA</em>, the <em>Sissy Life</em> CYOAs, <em>Episo/d/e V: Attack of the CYOA</em>, the <em>Whore Island</em> CYOA, the <em>Slut Life CYOA</em> and its <em>Exalted</em> “DLC”, the <em>Handler/Fetish CYOA</em>; but also <em>Sanguine Debauchery</em> and <em>SD+</em>, <em>Deviously Cursed Loot</em> (really nice job, Kimy), and the whole <em>LoversLab</em> community in general.
 					<br/><br/><small>SGVsbG8gV29ybGQK is 'Hello World' encrypted with base64</small>
 				</td>
 			</tr>
 			<tr>
-				<td class="head" colspan="" style="font-size:8px;width:70%;">
+				<td class="head" style="font-size:8px;width:70%;">
 					<b>Change Log 1.00->1.01:</b><br/>
 						&nbsp;Added the points system back<br/>
 						&nbsp;Cleaned up some code<br/>
 					<b>Change Log 1.01->1.02: 2019-02-06</b><br/>
-						&nbsp;/u/Vintrion added a lot of stuff, detailed notes attached below<br/>
+						&nbsp;/u/Vintrion added a lot of stuff, detailed notes below:<br/>
+						&nbsp;&nbsp;&nbsp;I've made a monster. Major changes only from this point on: Removed Fuck Machine/Pee Orgasm, changed Ass-Matic to general drawback, fucked with order of everything and standardized to Metric <br/>
+						&nbsp;&nbsp;&nbsp;Added a lot of drawbacks that are mostly for convenience, and nerfed the fuck out of other things that are potentially too convenient for quick fucks, or only exist to separate you from society without real demerits<br/>
+						&nbsp;&nbsp;&nbsp;It should be self-explanatory but Waste when mentioned refers to the decomposed mass found in bowels, and when removed human biology will; though magically, convert it to a harmless lubricant.<br/>
+						&nbsp;Edited a lot of the code, contributing to this should be a lot easier now<br/>
 					<b>Roadmap:</b><br/>
 						&nbsp;Format the blocks so the CYOA is more condensed<br/>
-						&nbsp;Cleaning up the javascript code some more because it is just a mess<br/>
-						&nbsp;Cleaning up the html classes for more consistency<br/>
 						&nbsp;Possibly let someone else do this project because I can contribute nothing other than the technical side of this cyoa (being on a website and such)<br/>
 						&nbsp;Attempt to do automatic formatting so adding new blocks won't be such a pain in the butt<br/>
 						&nbsp;Accept suggestions from different forums I guess?<br/>
-					<b>Vintri Notes:</b><br/>
-						&nbsp;I've made a monster. Major changes only from this point on: Removed Fuck Machine/Pee Orgasm, changed Ass-Matic to general drawback, fucked with order of everything and standardized to Metric <br/>
-						&nbsp;Added a lot of drawbacks that are mostly for convenience, and nerfed the fuck out of other things that are potentially too convenient for quick fucks, or only exist to separate you from society without real demerits<br/>
-						&nbsp;It should be self-explanatory but Waste when mentioned refers to the decomposed mass found in bowels, and when removed human biology will; though magically, convert it to a harmless lubricant.
 					</br>
 				</td>
 			</tr>

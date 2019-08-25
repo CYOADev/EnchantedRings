@@ -310,7 +310,7 @@ function ccount(n) {
 		};
 		bminus = document.createElement('button');
 		bminus.type = 'button';
-		bminus.appendChild(document.createTextNode('—'));
+		bminus.appendChild(document.createTextNode('-'));
 		bminus.onclick = function() {
 			ccount(-2);
 		};
@@ -323,7 +323,7 @@ function ccount(n) {
 		counter = p;
 	}
 	count += n;
-	counter.innerHTML = ('' + count).replace('-', '—');
+	// counter.innerHTML = ('' + count).replace('-', '—');
 }
 
 function isnotjob(s) {
@@ -1120,7 +1120,7 @@ var svg_data = {
 						For each ring, you can buy any amount of powers, drawbacks; in any order you want. Powers will take points, drawbacks will give you points. All points are specific to that ring, and the total sum of points of each ring must be zero or positive.
 					</p>
 					<p>
-						The rings you make are crafted in order. The first one you craft starts with 0 points, the second one starts with —2 points, the third with —4 points, and so on. This does not apply to slave rings and rings of ownership.
+						The rings you make are crafted in order. The first one you craft starts with 0 points, the second one starts with -2 points, the third with -4 points, and so on. This does not apply to slave rings and rings of ownership.
 					</p>
 					<p>
 						Some effects can’t be taken together: they can’t be applied to the same ring. They may be applied to different rings, but these rings cannot then be worn together. In general, two effects from two different rings count as taken together for as long as they’re both active if the two rings are worn together.
@@ -1129,7 +1129,7 @@ var svg_data = {
 						Unless otherwise specified, each effect cannot be taken more than once per ring.
 					</p>
 					<p>
-						Multiple rings can be worn together only if they have together at least as much unused points as the sum of their common drawbacks minus the sum of their common non-stackable powers; for example, if two rings have only three +3 drawbacks and a —5 non-stackable power in common, they must have together at least 4 left over points to be worn together. Their common powers and drawbacks don’t stack (except for powers that can be taken multiple times); drawbacks and punishments that override powers override them over all active powers, not just the powers from their own ring.
+						Multiple rings can be worn together only if they have together at least as much unused points as the sum of their common drawbacks minus the sum of their common non-stackable powers; for example, if two rings have only three +3 drawbacks and a -5 non-stackable power in common, they must have together at least 4 left over points to be worn together. Their common powers and drawbacks don’t stack (except for powers that can be taken multiple times); drawbacks and punishments that override powers override them over all active powers, not just the powers from their own ring.
 					<p>
 						The goddess wants you to entertain her, so she will keep random events from happening at times that would put you in danger.
 					</p>
@@ -1589,7 +1589,7 @@ var svg_data = {
 					Roll a random number between 0 and <b style="font-weight:normal" id="maxroll"></b>. Note: you can use http://random.org/integers to generate numbers.
 					<br/><br/>Locate the associated drawback using the grey number below the number of points obtained. Then, choose <em>now</em> between the following options:
 					<br/><br/>1. Accept and take that drawback for this ring, if you can. If you can’t because of requirements, take one of its (direct or indirect) requirements you can take. If you can’t because it’s already taken, take one drawback that (directly or indirectly) requires it and that you can take. If you still can’t, reroll for free. Whatever drawback you take that way, the amount of points it gives you is tripled.
-					<br/><br/>2. Refuse that drawback and reroll. You lose 4 — (the reward of the most rewarding drawback you could have taken by going through option <strong>1</strong>) points.
+					<br/><br/>2. Refuse that drawback and reroll. You lose 4 - (the reward of the most rewarding drawback you could have taken by going through option <strong>1</strong>) points.
 					<br/><br/>If you can reassign drawback points with <strong>ring of devotion</strong> and <strong>ring of domination</strong>, you must reassign all points they made you gain through random rolling, including the possible <strong>full random</strong> bonus.
 				</td>
 				<td class="parent"><span class="a2">Ho<img class="u_svg"/><img class="g_svg"/></span>
